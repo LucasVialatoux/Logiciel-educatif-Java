@@ -10,7 +10,8 @@ import javafx.scene.text.Text;
 
 
 public class PageAide extends Fenetre {
-    public PageAide(){
+    public PageAide(String bgd){
+        super(bgd);
         text();
     }
     public void text(){

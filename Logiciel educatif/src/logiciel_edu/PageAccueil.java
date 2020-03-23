@@ -35,7 +35,7 @@ public class PageAccueil{
     public PageAccueil(){
         this.stage=new Stage();
         this.root = new Pane();
-        String imageURI = new File("icone.jpg").toURI().toString(); 
+        String imageURI = new File("Logo.png").toURI().toString(); 
         Image image = new Image(imageURI);
         this.stage.getIcons().add(image);
         
@@ -62,12 +62,19 @@ public class PageAccueil{
         grid.setHgap(10);
         grid.setPadding(new Insets(5, 5, 5, 5));
         grid.add(btnConnexion, 46, 35);
+        btnConnexion.setOnAction(new EventHandler<ActionEvent>() {
+                                @Override
+                                public void handle(ActionEvent t) {
+                                    stage.close();
+                                    new PageFacile("fondFacile.png");
+                                }
+                            });
         grid.add(btnAide, 46, 45);
         btnAide.setOnAction(new EventHandler<ActionEvent>() {
                                 @Override
                                 public void handle(ActionEvent t) {
                                     stage.close();
-                                    new PageAide();
+                                    new PageAide("");
                                 }
                             });
         root.getChildren().add(grid);
