@@ -12,45 +12,33 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 /**
  *
  * @author p1606751
  */
-public class PageAccueil{
+public class PageAccueil extends Fenetre{
     
     public TextField user;
     public PasswordField mdp;
-    public Stage stage;
-    public Pane root;
     public Platform platform;
     public boolean userEmpty, mdpEmpty;
     public Button btnConnexion;
+    public Button bfacile;
+    public Button bmoyen;
+    public Button bdif;
     private static final String IDLE_BUTTON_STYLE = "-fx-background-color: #2EAB4A;-fx-font-size: 2em;-fx-text-fill: white;";
+    private static final String NORM_BUTTON_STYLE = "-fx-background-color: #FF7900;-fx-font-size: 2em;-fx-text-fill: white;";
+    private static final String HOVERED_NORM_BUTTON_STYLE = "-fx-background-color: #ffad66;-fx-font-size: 2em;-fx-text-fill: white;";
+    private static final String HARD_BUTTON_STYLE = "-fx-background-color: #FF0007;-fx-font-size: 2em;-fx-text-fill: white;";
+    private static final String HOVERED_HARD_BUTTON_STYLE = "-fx-background-color: #ff666b;-fx-font-size: 2em;-fx-text-fill: white;";
     private static final String HOVERED_BUTTON_STYLE = "-fx-background-color: #49d168;-fx-font-size: 2em;-fx-text-fill: white;";
     private static final String IDLE_BUTTON_STYLE_AIDE = "-fx-background-color:#f58d42;-fx-font-size: 2em;-fx-text-fill: white;";
     private static final String HOVERED_BUTTON_STYLE_AIDE = "-fx-background-color:#faa05f;-fx-font-size: 2em;-fx-text-fill: white;";
     
     public PageAccueil(){
-        this.stage=new Stage();
-        this.root = new Pane();
-        String imageURI = new File("Logo.png").toURI().toString(); 
-        Image image = new Image(imageURI);
-        this.stage.getIcons().add(image);
-        
-        btnConnexion = new Button("Jouer");
-        btnConnexion.setPrefWidth(300);
-        btnConnexion.setStyle(IDLE_BUTTON_STYLE);
-        btnConnexion.setOnMouseEntered(e -> btnConnexion.setStyle(HOVERED_BUTTON_STYLE));
-        btnConnexion.setOnMouseExited(e -> btnConnexion.setStyle(IDLE_BUTTON_STYLE));
-        
-        Button btnAide = new Button("Aide");
-        btnAide.setPrefWidth(300);
-        btnAide.setStyle(IDLE_BUTTON_STYLE_AIDE);
-        btnAide.setOnMouseEntered(e -> btnAide.setStyle(HOVERED_BUTTON_STYLE_AIDE));
-        btnAide.setOnMouseExited(e -> btnAide.setStyle(IDLE_BUTTON_STYLE_AIDE));
-        
+        initialisation();
         String imageURI2 = new File("fond.png").toURI().toString(); 
         Image image2 = new Image(imageURI2);
         ImageView imageView = new ImageView(image2); 
@@ -62,27 +50,63 @@ public class PageAccueil{
         grid.setHgap(10);
         grid.setPadding(new Insets(5, 5, 5, 5));
         grid.add(btnConnexion, 46, 35);
-        btnConnexion.setOnAction(new EventHandler<ActionEvent>() {
-                                @Override
-                                public void handle(ActionEvent t) {
-                                    stage.close();
-                                    new PageFacile("fondFacile.png");
-                                }
-                            });
-        grid.add(btnAide, 46, 45);
-        btnAide.setOnAction(new EventHandler<ActionEvent>() {
-                                @Override
-                                public void handle(ActionEvent t) {
-                                    stage.close();
-                                    new PageAide("");
-                                }
-                            });
+        grid.add(bfacile, 46, 35);
+        grid.add(bmoyen, 46, 45);
+        grid.add(bdif, 46, 55);
+        btnConnexion.setOnAction(new Menue(this));
         root.getChildren().add(grid);
-        Scene scene = new Scene(root, 1200, 675);
         scene.addEventFilter(KeyEvent.KEY_PRESSED,new ActionEntree(this));
-        stage.setTitle("Voiture"); 
-        stage.setScene(scene);
-        stage.show();
+        this.setScene(scene);
+    }
+    
+    public void initialisation(){
+        btnConnexion = new Button("Jouer");
+        btnConnexion.setPrefWidth(300);
+        btnConnexion.setStyle(IDLE_BUTTON_STYLE);
+        btnConnexion.setOnMouseEntered(e -> btnConnexion.setStyle(HOVERED_BUTTON_STYLE));
+        btnConnexion.setOnMouseExited(e -> btnConnexion.setStyle(IDLE_BUTTON_STYLE));
+        
+        bfacile = new Button("Facile");
+        bfacile.setPrefWidth(300);
+        bfacile.setStyle(IDLE_BUTTON_STYLE);
+        bfacile.setOnMouseEntered(e -> bfacile.setStyle(HOVERED_BUTTON_STYLE));
+        bfacile.setOnMouseExited(e -> bfacile.setStyle(IDLE_BUTTON_STYLE));
+        bfacile.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event){
+                close();
+                new Page1Jeu();
+            }
+        });
+        bfacile.setVisible(false);
+        
+        bmoyen = new Button("Moyen");
+        bmoyen.setPrefWidth(300);
+        bmoyen.setStyle(NORM_BUTTON_STYLE);
+        bmoyen.setOnMouseEntered(e -> bmoyen.setStyle(HOVERED_NORM_BUTTON_STYLE));
+        bmoyen.setOnMouseExited(e -> bmoyen.setStyle(NORM_BUTTON_STYLE));
+        bmoyen.setVisible(false);
+        
+        bdif = new Button("Difficile");
+        bdif.setPrefWidth(300);
+        bdif.setStyle(HARD_BUTTON_STYLE);
+        bdif.setOnMouseEntered(e -> bdif.setStyle(HOVERED_HARD_BUTTON_STYLE));
+        bdif.setOnMouseExited(e -> bdif.setStyle(HARD_BUTTON_STYLE));
+        bdif.setVisible(false);
+    }
+    
+     public class Menue implements EventHandler<ActionEvent>{
+        public PageAccueil p;
+        public Menue(PageAccueil p){
+            this.p=p;
+        }
+        @Override
+          public void handle(ActionEvent e) {
+            this.p.btnConnexion.setVisible(false);
+            this.p.bfacile.setVisible(true);
+            this.p.bmoyen.setVisible(true);
+            this.p.bdif.setVisible(true);
+        }
     }
    
     public class ActionEntree implements EventHandler<KeyEvent>{
@@ -94,13 +118,17 @@ public class PageAccueil{
         }
         @Override
           public void handle(KeyEvent e) {
-              if(e.getCode() == KeyCode.ENTER && !this.p.btnConnexion.isDisable()&&b==true){
-                  b=false;
-                  //Connexion c=new Connexion(this.p);
-                  ActionEvent event = null;
-                  //c.handle(event);
-              }else{
-                  b=true;
+              if(e.getCode() == KeyCode.ENTER && !this.p.btnConnexion.isVisible()){
+                this.p.btnConnexion.setVisible(false);
+                this.p.bfacile.setVisible(true);
+                this.p.bmoyen.setVisible(true);
+                this.p.bdif.setVisible(true);
+              }
+              else if(e.getCode() == KeyCode.ESCAPE && !this.p.btnConnexion.isVisible()){
+                this.p.btnConnexion.setVisible(true);
+                this.p.bfacile.setVisible(false);
+                this.p.bmoyen.setVisible(false);
+                this.p.bdif.setVisible(false);
               }
         }
     }

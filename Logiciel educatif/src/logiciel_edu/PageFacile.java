@@ -11,8 +11,7 @@ package logiciel_edu;
  * @author lucas
  */
 public final class PageFacile extends Fenetre {
-    public PageFacile(String bgd) {
-        super(bgd);
+    public PageFacile() {
     }
     
     

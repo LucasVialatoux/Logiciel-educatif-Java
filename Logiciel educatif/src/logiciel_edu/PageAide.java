@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
 
 public class PageAide extends Fenetre {
     public PageAide(String bgd){
-        super(bgd);
+        super();
         text();
     }
     public void text(){
@@ -19,6 +19,6 @@ public class PageAide extends Fenetre {
         Text aide=new Text();
         aide.setText("  Logiciel de covoiturage\n\n            crée par     \n\n    Antoine DULHOSTE\n\n      Lucas VIALATOUX\n\n");
         aide.setFont(police);
-        this.root.setCenter(aide);
+        //this.root.setCenter(aide);
     }
 }

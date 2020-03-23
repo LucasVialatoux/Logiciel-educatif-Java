@@ -11,7 +11,6 @@ package logiciel_edu;
  * @author lucas
  */
 public class PageMoyen extends Fenetre {
-    public PageMoyen(String bgd) {
-        super(bgd);
+    public PageMoyen() {
     }
 }
