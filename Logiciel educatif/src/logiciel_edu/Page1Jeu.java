@@ -59,7 +59,7 @@ public class Page1Jeu extends Fenetre {
         root.getChildren().setAll(imageView);
         root.getChildren().add(imageViewV);
         root.getChildren().add(imageViewS);
-        this.setScene(scene);
+        this.setScene(scene);s
     }
     
 }
