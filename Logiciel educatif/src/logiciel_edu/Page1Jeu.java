@@ -6,15 +6,15 @@
 package logiciel_edu;
 
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 /**
@@ -23,7 +23,13 @@ import javafx.util.Duration;
  */
 public class Page1Jeu extends Fenetre {
     
+    private static final String IDLE_BUTTON_STYLE = "-fx-background-color: #3b7af7;-fx-font-size: 2em;-fx-text-fill: white;";
+    private static final String HOVERED_BUTTON_STYLE = "-fx-background-color: #6898f7;-fx-font-size: 2em;-fx-text-fill: white;";
+    
     public Page1Jeu(){
+        
+        Materials mat = new Materials();
+
         String imageURI = new File("route.jpg").toURI().toString(); 
         Image image = new Image(imageURI);
         ImageView imageView = new ImageView(image); 
@@ -74,11 +80,32 @@ public class Page1Jeu extends Fenetre {
         		}
 		));
         t.play();
+        
+        Button bsmoke = mat.createBtn("La fumée","smoke.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2);
+        Button bvitre = mat.createBtn("La vitre","vitre.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,0);
+        Button broue = mat.createBtn("La roue","roue.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,0);
+        Text aide = mat.createText("Qu'est-ce qui pollue dans une voiture ?");
+        
+        
+        GridPane grid = new GridPane();
+        grid.setVgap(4);
+        grid.setHgap(10);
+        grid.setPadding(new Insets(5, 5, 5, 5));
+        grid.add(bvitre, 5, 70);
+        grid.add(bsmoke, 15, 70);
+        grid.add(broue, 25, 70);
+        grid.add(aide, 7,50,50, 4);
+        
+
+        
         root.getChildren().setAll(imageView);
         root.getChildren().add(imageViewA);
         root.getChildren().add(imageViewV);
         root.getChildren().add(imageViewS);
+        root.getChildren().add(grid);
         this.setScene(scene);
     }
+    
+    
     
 }

@@ -10,14 +10,14 @@ import javafx.scene.text.Text;
 
 
 public class PageAide extends Fenetre {
-    public PageAide(String bgd){
+    public PageAide(){
         super();
         text();
     }
     public void text(){
         Font police = Font.loadFont(PageAide.class.getResourceAsStream("/GOTHICB0.TTF"), 20);
         Text aide=new Text();
-        aide.setText("  Logiciel de covoiturage\n\n            crée par     \n\n    Antoine DULHOSTE\n\n      Lucas VIALATOUX\n\n");
+        aide.setText("  Logiciel éducatif créé par     \n\nAntoine DULHOSTE & Lucas VIALATOUX\n\n");
         aide.setFont(police);
         //this.root.setCenter(aide);
     }
