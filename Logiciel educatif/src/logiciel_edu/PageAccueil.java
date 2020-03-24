@@ -6,7 +6,6 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -19,7 +18,6 @@ import javafx.scene.layout.*;
  * @author p1606751
  */
 public class PageAccueil extends Fenetre{
-    
     public TextField user;
     public PasswordField mdp;
     public Platform platform;
@@ -75,7 +73,8 @@ public class PageAccueil extends Fenetre{
             @Override
             public void handle(MouseEvent event){
                 close();
-                new Page1Jeu();
+                page1Jeu = new Page1Jeu();
+                page1Jeu.changer(1);
             }
         });
         bfacile.setVisible(false);
