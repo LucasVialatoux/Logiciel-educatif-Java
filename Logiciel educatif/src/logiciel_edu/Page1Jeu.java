@@ -6,6 +6,8 @@
 package logiciel_edu;
 
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -54,9 +56,26 @@ public class Page1Jeu extends Fenetre {
         			}
         		}
 		));
-        timeline.setCycleCount( Animation.INDEFINITE);
+        timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+        String imageURIA = new File("red arrow.png").toURI().toString(); 
+        Image imageA = new Image(imageURIA);
+        ImageView imageViewA = new ImageView(imageA); 
+        imageViewA.setFitWidth(100); 
+        imageViewA.setFitHeight(53);
+        imageViewA.setRotate(320.0);
+        imageViewA.setLayoutX(685);
+        imageViewA.setLayoutY(440);
+        imageViewA.setOpacity(0);
+        Timeline t = new Timeline(new KeyFrame(
+        		Duration.millis(30000), 
+        		event-> {
+                                imageViewA.setOpacity(1);
+        		}
+		));
+        t.play();
         root.getChildren().setAll(imageView);
+        root.getChildren().add(imageViewA);
         root.getChildren().add(imageViewV);
         root.getChildren().add(imageViewS);
         this.setScene(scene);
