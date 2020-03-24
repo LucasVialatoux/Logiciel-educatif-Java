@@ -26,6 +26,8 @@ public class Page1Jeu extends Fenetre {
     private Text aide;
     private final Materials mat;
     private final GridPane grid;
+    private Timeline t;
+    private ImageView imageViewA;
     
     public Page1Jeu(){
         mat = new Materials();
@@ -41,7 +43,7 @@ public class Page1Jeu extends Fenetre {
         ImageView imageViewS =mat.createImage("smoke.png", 45, 45, 65.0, 685, 480);
         ImageView imageViewV =mat.createImage("voiture.png", 200, 200, 0, 500, 380);
         imageViewS.setOpacity(1);
-        ImageView imageViewA =mat.createImage("red arrow.png", 100, 53, 320.0, 685, 440);
+        imageViewA =mat.createImage("red arrow.png", 100, 53, 320.0, 685, 440);
         imageViewA.setOpacity(0);
         
         //timeline qui permet de faire clignoter le press to start
@@ -58,8 +60,8 @@ public class Page1Jeu extends Fenetre {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
         
-        Timeline t = new Timeline(new KeyFrame(
-        		Duration.millis(30000), 
+        t = new Timeline(new KeyFrame(
+        		Duration.millis(20000), 
         		event-> {
                                 imageViewA.setOpacity(1);
         		}
@@ -87,6 +89,8 @@ public class Page1Jeu extends Fenetre {
                 
                 break;
             case 2 :
+                t.stop();
+                imageViewA.setOpacity(0);
                 Button byes = mat.createBtn("Oui","good.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,page1Jeu);
                 Button bno = mat.createBtn("Non","bad.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,53,page1Jeu);
                 aide = mat.createText("Est-ce que la fumée est dangereuse pour la santé ?");
