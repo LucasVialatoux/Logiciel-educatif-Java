@@ -63,7 +63,15 @@ public class Materials{
                                 "Allez, passe vite à la question suivante !",
                                 AlertType.INFORMATION);
                         alertB1.showAndWait();
-                        page.changer(2);
+                        page.changer(3);
+                        break;
+                    case 4:
+                        Alert alertB2 = createAlert("BRAVO !", 
+                                "Le vélo est le plus écologique !\nEffectivement il ne produit aucune fumée.", 
+                                "Allez, passe vite à la question suivante !",
+                                AlertType.INFORMATION);
+                        alertB2.showAndWait();
+                        page.changer(3);
                         break;
                     case 51:
                         Alert alert1 = createAlert("Tu y es presque :-)", 
@@ -85,6 +93,20 @@ public class Materials{
                                 "Essaie encore ! Courage !",
                                 AlertType.WARNING);
                         alert3.showAndWait();
+                        break;
+                     case 54:
+                        Alert alert4 = createAlert("Tu y es presque :-)", 
+                                "Malheureusement ce n'est pas la voiture.. ", 
+                                "On a vu ensemble que la voiture pollue à cause de la fumée \nEssaie encore ! Courage !",
+                                AlertType.WARNING);
+                        alert4.showAndWait();
+                        break;
+                     case 55:
+                        Alert alert5 = createAlert("Tu y es presque :-)", 
+                                "Attention, le scooter pollue aussi.", 
+                                "Le scooter produit aussi de la fumée.\nEssaie encore ! Courage !",
+                                AlertType.WARNING);
+                        alert5.showAndWait();
                         break;
                     default:
                         

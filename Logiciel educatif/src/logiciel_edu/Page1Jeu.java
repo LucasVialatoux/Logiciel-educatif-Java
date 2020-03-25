@@ -26,8 +26,8 @@ public class Page1Jeu extends Fenetre {
     private Text aide;
     private final Materials mat;
     private final GridPane grid;
-    private Timeline t;
-    private ImageView imageViewA;
+    private Timeline t, timeline, timeline2;
+    private ImageView imageViewA,imageViewV;
     
     public Page1Jeu(){
         mat = new Materials();
@@ -41,13 +41,13 @@ public class Page1Jeu extends Fenetre {
         //ImageViews
         ImageView imageViewR =mat.createImage("route.jpg", 1200, 675, 0, 0, 0);
         ImageView imageViewS =mat.createImage("smoke.png", 45, 45, 65.0, 685, 480);
-        ImageView imageViewV =mat.createImage("voiture.png", 200, 200, 0, 500, 380);
+        
         imageViewS.setOpacity(1);
         imageViewA =mat.createImage("red arrow.png", 100, 53, 320.0, 685, 440);
         imageViewA.setOpacity(0);
         
         //timeline qui permet de faire clignoter le press to start
-        Timeline timeline = new Timeline(new KeyFrame(
+        timeline = new Timeline(new KeyFrame(
         		Duration.millis(500), 
         		event-> {
         			if (imageViewS.getOpacity()==1) {
@@ -57,8 +57,7 @@ public class Page1Jeu extends Fenetre {
         			}
         		}
 		));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
+        
         
         t = new Timeline(new KeyFrame(
         		Duration.millis(20000), 
@@ -66,37 +65,80 @@ public class Page1Jeu extends Fenetre {
                                 imageViewA.setOpacity(1);
         		}
 		));
-        t.play();
+        
         
         
         root.getChildren().setAll(imageViewR);
-        root.getChildren().addAll(imageViewA,imageViewV,imageViewS,grid);
+        root.getChildren().addAll(imageViewA,imageViewS,grid);
         this.setScene(scene);
     }
     
     public void changer(int sousPage){
         grid.getChildren().clear();
+        if(t != null)
+            t.stop();
+        if(timeline != null)
+            timeline.stop();
+        if(timeline2 != null)
+            timeline2.stop();
         switch(sousPage){
             case 1 :
+                timeline.setCycleCount(Animation.INDEFINITE);
+                timeline.play();
+                t.play();
                 Button bsmoke = mat.createBtn("La fumée","smoke.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,page1Jeu);
                 Button bvitre = mat.createBtn("La vitre","vitre.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,51,page1Jeu);
                 Button broue = mat.createBtn("La roue","roue.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,52,page1Jeu);
+                imageViewV =mat.createImage("voiture.png", 200, 200, 0, 500, 380);
                 aide = mat.createText("Qu'est-ce qui pollue dans une voiture ?");
                 grid.add(bvitre, 5, 70);
                 grid.add(bsmoke, 15, 70);
                 grid.add(broue, 25, 70);
                 grid.add(aide, 7,50,50, 4);
-                
+                root.getChildren().add(imageViewV);
                 break;
             case 2 :
-                t.stop();
+                timeline.play();
                 imageViewA.setOpacity(0);
                 Button byes = mat.createBtn("Oui","good.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,page1Jeu);
                 Button bno = mat.createBtn("Non","bad.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,53,page1Jeu);
                 aide = mat.createText("Est-ce que la fumée est dangereuse pour la santé ?");
+                imageViewV =mat.createImage("voiture.png", 200, 200, 0, 500, 380);
                 grid.add(byes, 15, 70);
                 grid.add(bno, 30, 70);
                 grid.add(aide, 15,50,50, 4);
+                root.getChildren().add(imageViewV);
+                break;
+            case 3 :
+                timeline.play();
+                imageViewV =mat.createImage("bike.png", 200, 200, 0, 250, 380);
+                ImageView imageViewS2 =mat.createImage("smoke.png", 45, 45, 220.0, 795, 500);
+                ImageView imageViewV1 =mat.createImage("voiture.jpg", 200, 200, 0, 400, 380);
+                ImageView imageViewV2 =mat.createImage("scooter.png", 200, 200, 0, 800, 380);
+                Button bvoiture = mat.createBtn("La voiture","voiture.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,54,page1Jeu);
+                Button bvelo = mat.createBtn("Le vélo","bike.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,4,page1Jeu);
+                Button bscooter = mat.createBtn("Le scooter","scooter.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,55,page1Jeu);
+                aide = mat.createText("Qu'est-ce qui est plus écologique ?");
+                grid.add(bscooter, 5, 70);
+                grid.add(bvoiture, 15, 70);
+                grid.add(bvelo, 25, 70);
+                grid.add(aide, 15,50,50, 4);
+                timeline2 = new Timeline(new KeyFrame(
+                                Duration.millis(500), 
+                                event-> {
+                                        if (imageViewS2.getOpacity()==1) {
+                                                imageViewS2.setOpacity(0);	
+                                        } else {
+                                                imageViewS2.setOpacity(1);
+                                        }
+                                }
+                        ));
+                timeline2.setCycleCount(Animation.INDEFINITE);
+                timeline2.play();
+                root.getChildren().add(imageViewV);
+                root.getChildren().add(imageViewS2);
+                root.getChildren().add(imageViewV1);
+                root.getChildren().add(imageViewV2);
                 break;
             default:
                 aide = mat.createText("Page par défault");
