@@ -7,14 +7,12 @@ package logiciel_edu;
 
 import java.io.File;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -71,7 +69,15 @@ public class Materials{
                                 "Allez, passe vite à la question suivante !",
                                 AlertType.INFORMATION);
                         alertB2.showAndWait();
-                        page.changer(3);
+                        page.changer(4);
+                        break;
+                    case 5:
+                        Alert alertB3 = createAlert("BRAVO !", 
+                                "Bien joué ! C'est bien ça le CO2 :-)", 
+                                "Allez, passe vite à la question suivante !",
+                                AlertType.INFORMATION);
+                        alertB3.showAndWait();
+                        page.changer(4);
                         break;
                     case 51:
                         Alert alert1 = createAlert("Tu y es presque :-)", 
@@ -107,6 +113,13 @@ public class Materials{
                                 "Le scooter produit aussi de la fumée.\nEssaie encore ! Courage !",
                                 AlertType.WARNING);
                         alert5.showAndWait();
+                        break;
+                     case 56:
+                        Alert alert6 = createAlert("Tu y es presque :-)", 
+                                "Attention, c'est de la poussière, et pas du CO2.", 
+                                "Observe le CO2 proche de la voiture.\nEssaie encore ! Courage !",
+                                AlertType.WARNING);
+                        alert6.showAndWait();
                         break;
                     default:
                         

@@ -29,12 +29,11 @@ public abstract class Fenetre extends Stage {
     public Fenetre() {
         root = new Pane(); 
         scene = new Scene(root, 1200, 675);
-        this.setTitle("Voiture");
+        this.setTitle("EcoCar");
         String imageURI = new File("Logo.png").toURI().toString(); 
         Image image = new Image(imageURI);
         this.getIcons().add(image);
         this.setScene(scene);
-        this.setTitle("Voiture");
         this.show();
         
     }

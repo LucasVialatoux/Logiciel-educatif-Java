@@ -24,23 +24,22 @@ public class Page1Jeu extends Fenetre {
     private static final String IDLE_BUTTON_STYLE = "-fx-background-color: #3b7af7;-fx-font-size: 2em;-fx-text-fill: white;";
     private static final String HOVERED_BUTTON_STYLE = "-fx-background-color: #6898f7;-fx-font-size: 2em;-fx-text-fill: white;";
     private Text aide;
-    private final Materials mat;
+    private final Materials mat= new Materials();;
     private final GridPane grid;
     private Timeline t, timeline, timeline2;
     private ImageView imageViewA,imageViewV;
+    //ImageViews
+    private final ImageView imageViewS =mat.createImage("smoke.png", 45, 45, 65.0, 685, 480);
+    private final ImageView imageViewR =mat.createImage("route.jpg", 1200, 675, 0, 0, 0);
     
     public Page1Jeu(){
-        mat = new Materials();
-        
         //Grid
         grid = new GridPane();
         grid.setVgap(4);
         grid.setHgap(10);
         grid.setPadding(new Insets(5, 5, 5, 5));
         
-        //ImageViews
-        ImageView imageViewR =mat.createImage("route.jpg", 1200, 675, 0, 0, 0);
-        ImageView imageViewS =mat.createImage("smoke.png", 45, 45, 65.0, 685, 480);
+        
         
         imageViewS.setOpacity(1);
         imageViewA =mat.createImage("red arrow.png", 100, 53, 320.0, 685, 440);
@@ -57,7 +56,7 @@ public class Page1Jeu extends Fenetre {
         			}
         		}
 		));
-        
+        timeline.setCycleCount(Animation.INDEFINITE);
         
         t = new Timeline(new KeyFrame(
         		Duration.millis(20000), 
@@ -66,11 +65,15 @@ public class Page1Jeu extends Fenetre {
         		}
 		));
         
-        
-        
         root.getChildren().setAll(imageViewR);
         root.getChildren().addAll(imageViewA,imageViewS,grid);
         this.setScene(scene);
+    }
+    
+    public void clearAndSetBackground(ImageView imageViewR,ImageView imageViewS){
+        root.getChildren().clear();
+        root.getChildren().setAll(imageViewR);
+        root.getChildren().addAll(imageViewA,imageViewS,grid);
     }
     
     public void changer(int sousPage){
@@ -83,7 +86,7 @@ public class Page1Jeu extends Fenetre {
             timeline2.stop();
         switch(sousPage){
             case 1 :
-                timeline.setCycleCount(Animation.INDEFINITE);
+                
                 timeline.play();
                 t.play();
                 Button bsmoke = mat.createBtn("La fumée","smoke.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,page1Jeu);
@@ -139,6 +142,26 @@ public class Page1Jeu extends Fenetre {
                 root.getChildren().add(imageViewS2);
                 root.getChildren().add(imageViewV1);
                 root.getChildren().add(imageViewV2);
+                break;
+            case 4 :
+                clearAndSetBackground(imageViewR,imageViewS);
+                timeline.play();
+                imageViewA.setOpacity(0);
+                imageViewV2 =mat.createImage("dust.png", 60, 60, 0, 1020, 440);
+                imageViewV1 =mat.createImage("co2.png", 90, 90, 0, 700, 400);
+                imageViewS2 =mat.createImage("running.png", 150, 150, 0, 900, 350);
+                Button bco2 = mat.createBtn("Je pense que c'est ça","cO2.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,page1Jeu);
+                Button bdust = mat.createBtn("Je pense que c'est ça","dust.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,56,page1Jeu);
+                aide = mat.createText("La fumée de la voiture produit du CO2, c'est ça qui pollue.\n"
+                        + "Sais-tu reconnaître le C02 ?");
+                imageViewV =mat.createImage("voiture.png", 200, 200, 0, 500, 380);
+                grid.add(bco2, 15, 70);
+                grid.add(bdust, 30, 70);
+                grid.add(aide, 15,50,50, 4);
+                root.getChildren().add(imageViewV);
+                root.getChildren().add(imageViewV1);
+                root.getChildren().add(imageViewV2);
+                root.getChildren().add(imageViewS2);
                 break;
             default:
                 aide = mat.createText("Page par défault");
