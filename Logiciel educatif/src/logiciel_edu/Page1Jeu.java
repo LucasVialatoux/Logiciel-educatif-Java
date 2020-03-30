@@ -168,6 +168,53 @@ public class Page1Jeu extends Fenetre {
                 root.getChildren().add(imageViewV2);
                 root.getChildren().add(imageViewS2);
                 break;
+            case 5 :
+                clearAndSetBackground(imageViewR,imageViewS);
+                imageViewS.setOpacity(0);
+                imageViewA.setOpacity(0);
+                imageViewV2 =mat.createImage("oxygen.png", 90, 90, 0, 500, 450);
+                imageViewV1 =mat.createImage("cave.png", 150, 150, 0, 700, 550);
+                imageViewS2 =mat.createImage("carbone.png", 60, 60, 0, 700, 550);
+                Button bo2carbone = mat.createBtn("Je pense que c'est ça","o2carbone.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,page1Jeu,grid);
+                Button bo2 = mat.createBtn("Je pense que c'est ça","o2.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,57,page1Jeu,grid);
+                Button bcarbone = mat.createBtn("Je pense que c'est ça","carbone.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,58,page1Jeu,grid);
+                aide = mat.createText("Le CO2 est constituée de carbone et d'oxygène.\n"
+                        + "L'oxygène provient de la végétation et le carbone provient des rochers.\n"
+                        + "De quoi se compose le C02 ?",Color.GREEN);
+                imageViewV =mat.createImage("tree.png", 150, 150, 0, 500, 500);
+                grid.add(bo2carbone, 5, 60);
+                grid.add(bo2, 15, 60);
+                grid.add(bcarbone, 25, 60);
+                grid.add(aide, 6,50,50, 2);
+                timeline = new Timeline(new KeyFrame(
+                                Duration.millis(500), 
+                                event-> {
+                                        if (imageViewS2.getOpacity()==1) {
+                                                imageViewS2.setOpacity(0);	
+                                        } else {
+                                                imageViewS2.setOpacity(1);
+                                        }
+                                }
+                        ));
+                timeline.setCycleCount(Animation.INDEFINITE);
+                timeline.play();
+                timeline2 = new Timeline(new KeyFrame(
+                                Duration.millis(500), 
+                                event-> {
+                                        if (imageViewV2.getOpacity()==1) {
+                                                imageViewV2.setOpacity(0);	
+                                        } else {
+                                                imageViewV2.setOpacity(1);
+                                        }
+                                }
+                        ));
+                timeline2.setCycleCount(Animation.INDEFINITE);
+                timeline2.play();
+                root.getChildren().add(imageViewV);
+                root.getChildren().add(imageViewV1);
+                root.getChildren().add(imageViewV2);
+                root.getChildren().add(imageViewS2);
+                break;
             default:
                 aide = mat.createText("Page par défault",Color.GREEN);
                 grid.add(aide, 15,50,50, 4);

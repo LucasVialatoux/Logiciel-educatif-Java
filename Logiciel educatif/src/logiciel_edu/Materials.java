@@ -114,17 +114,23 @@ public class Materials{
                     case 5:
                         reponse = mat.createText("Bien joué ! C'est bien ça le CO2 :-)\n"
                                 + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
-                        btnNext = createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,4,page1Jeu);
+                        btnNext = createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,page1Jeu);
+                        grid.add(btnNext, 25, 100);
+                        break;
+                    case 6:
+                        reponse = mat.createText("Bien joué ! Le CO2 se compose bien d'oxygène et de carbone :-)\n"
+                                + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
+                        btnNext = createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,page1Jeu);
                         grid.add(btnNext, 25, 100);
                         break;
                     case 51:
                         reponse = mat.createText("Tu y es presque :-)\n"
-                                + "La vitre est utile pour regarder dehors, mais ne pollue pas.\n"
+                                + "La vitre est utile pour regarder dehors.\n"
                                 + "Essaie encore ! Courage !",Color.WHITESMOKE);
                         break;
                     case 52:
                         reponse = mat.createText("Tu y es presque :-)\n"
-                                + "La roue permet à la voiture de rouler mais ne polue pas.\n"
+                                + "La roue permet à la voiture de rouler.\n"
                                 + "Essaie encore ! Courage !",Color.WHITESMOKE);
                         break;
                      case 53:
@@ -145,6 +151,16 @@ public class Materials{
                      case 56:
                          reponse = mat.createText("Tu y es presque :-) Attention, c'est\n"
                                 + "de la poussière. Essaie encore ! Courage !"
+                                ,Color.WHITESMOKE);
+                        break;
+                     case 57:
+                         reponse = mat.createText("Tu y es presque :-) Attention, c'est de l'oxygène.\n"
+                                + "Le CO2 se compose de 2 choses. Essaie encore ! Courage !"
+                                ,Color.WHITESMOKE);
+                        break;
+                     case 58:
+                         reponse = mat.createText("Tu y es presque :-) Attention, c'est du carbone.\n"
+                                + "Le CO2 se compose de 2 choses. Essaie encore ! Courage !"
                                 ,Color.WHITESMOKE);
                         break;
                     default:
