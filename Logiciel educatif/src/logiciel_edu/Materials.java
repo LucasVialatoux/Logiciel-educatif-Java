@@ -22,6 +22,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import static logiciel_edu.Fenetre.page1Jeu;
+import static logiciel_edu.Fenetre.pageFacile;
 import static logiciel_edu.PageAccueil.HOVERED_BUTTON_STYLE;
 import static logiciel_edu.PageAccueil.IDLE_BUTTON_STYLE;
 
@@ -47,7 +48,31 @@ public class Materials{
         btn.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event){
-                Stage stage = (Stage) btn.getScene().getWindow();
+                // do what you have to do
+                page.changer(pageToCall);
+            }
+        });
+        String imageURIRoue = new File(image).toURI().toString();
+        ImageView imageView = new ImageView(imageURIRoue);
+        imageView.setFitWidth(45); 
+        imageView.setFitHeight(45);
+        imageView.setLayoutX(685);
+        imageView.setLayoutY(480);
+        btn.setGraphic(imageView);
+        
+        return btn;
+    }
+    
+    public Button createNextBtnFacile(String name, String image, String btnStyle, String btnHoverStyle, int pageToCall,PageFacile page){
+        Button btn = new Button(name);
+        Materials mat = new Materials();
+        btn.setPrefWidth(300);
+        btn.setStyle(btnStyle);
+        btn.setOnMouseEntered(e -> btn.setStyle(btnHoverStyle));
+        btn.setOnMouseExited(e -> btn.setStyle(btnStyle));
+        btn.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event){
                 // do what you have to do
                 page.changer(pageToCall);
             }
@@ -120,7 +145,7 @@ public class Materials{
                     case 6:
                         reponse = mat.createText("Bien joué ! Le CO2 se compose bien d'oxygène et de carbone :-)\n"
                                 + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
-                        btnNext = createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,page1Jeu);
+                        btnNext = createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,99,page1Jeu);
                         grid.add(btnNext, 25, 100);
                         break;
                     case 51:
@@ -162,6 +187,10 @@ public class Materials{
                          reponse = mat.createText("Tu y es presque :-) Attention, c'est du carbone.\n"
                                 + "Le CO2 se compose de 2 choses. Essaie encore ! Courage !"
                                 ,Color.WHITESMOKE);
+                        break;
+                     case 99:
+                         page1Jeu.close();
+                         PageAccueil pageAccueil = new PageAccueil();
                         break;
                     default:
                         
@@ -214,6 +243,131 @@ public class Materials{
         if (layoutY !=0){
             imageView.setLayoutY(layoutY);
         }
+        
+        return imageView;
+    }
+    
+    public ImageView createImageToClick(String myImage,int width, int height, double rotate,int layoutX, int layoutY,
+            int pageToCall,PageFacile page,GridPane grid){
+        Materials mat = new Materials();
+        String imageURI = new File(myImage).toURI().toString(); 
+        Image image = new Image(imageURI);
+        ImageView imageView = new ImageView(image); 
+        imageView.setFitWidth(width); 
+        imageView.setFitHeight(height);
+        if(rotate!=0){
+            imageView.setRotate(rotate);
+        }
+        if(layoutX != 0){
+            imageView.setLayoutX(layoutX);
+        }
+        if (layoutY !=0){
+            imageView.setLayoutY(layoutY);
+        }
+        imageView.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event){
+                Button btnNext;
+                grid.getChildren().remove(reponse);
+                for (Node node : grid.getChildren()) {
+                    if (node instanceof Button
+                     && grid.getColumnIndex(node) == 75
+                     && grid.getRowIndex(node) == 130) {
+                        btnNext=(Button) node;
+                        grid.getChildren().remove(btnNext);
+                        break;
+                    }
+                }
+                // do what you have to do
+                switch (pageToCall){
+                    case 1:
+                        page.changer(1);
+                        break;
+                    case 2:
+                        reponse = mat.createText("Bravo !\n",Color.WHITESMOKE);
+                        btnNext= createNextBtnFacile("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,pageFacile);
+                        grid.add(btnNext, 75, 130);
+                        break;
+                    case 3:
+                        reponse = mat.createText("Bravo !\n",Color.WHITESMOKE);
+                        btnNext = createNextBtnFacile("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,pageFacile);
+                        grid.add(btnNext, 75, 130);
+                        break;
+                    case 4:
+                        reponse = mat.createText("Bravo !\n",Color.WHITESMOKE);
+                        btnNext = createNextBtnFacile("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,4,pageFacile);
+                        grid.add(btnNext, 75, 130);
+                        break;
+                    case 5:
+                        reponse = mat.createText("Bravo !\n",Color.WHITESMOKE);
+                        btnNext = createNextBtnFacile("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,pageFacile);
+                        grid.add(btnNext, 75, 130);
+                        break;
+                    case 6:
+                        reponse = mat.createText("Bravo !\n",Color.WHITESMOKE);
+                        btnNext = createNextBtnFacile("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,99,pageFacile);
+                        grid.add(btnNext, 75, 130);
+                        break;
+                    case 51:
+                         reponse = mat.createText("Non, ce n'est pas la voiture !\nEssaie encore !"
+                                ,Color.WHITESMOKE);
+                        break;
+                    case 52:
+                         reponse = mat.createText("C'est une voiture, pas de la fumée !\nEssaie encore !"
+                                ,Color.WHITESMOKE);
+                        break;
+                    case 53:
+                         reponse = mat.createText("Non ce n'est pas la fumée !\nEssaie encore !"
+                                ,Color.WHITESMOKE);
+                        break;
+                    case 54:
+                         reponse = mat.createText("Non ce n'est pas la voiture !\nEssaie encore !"
+                                ,Color.WHITESMOKE);
+                        break;
+                    case 55:
+                         reponse = mat.createText("Non ce n'est pas le scooter !\nEssaie encore !"
+                                ,Color.WHITESMOKE);
+                        break;
+                    case 56:
+                         reponse = mat.createText("Non, ça c'est de la poussière !\nEssaie encore !"
+                                ,Color.WHITESMOKE);
+                        break;
+                    case 57:
+                         reponse = mat.createText("Non, ça c'est une personne !\nEssaie encore !"
+                                ,Color.WHITESMOKE);
+                        break;
+                    case 58:
+                         reponse = mat.createText("Non, ça c'est une voiture !\nEssaie encore !"
+                                ,Color.WHITESMOKE);
+                        break;
+                    case 59:
+                         reponse = mat.createText("Non, ça c'est de la fumée !\nEssaie encore !"
+                                ,Color.WHITESMOKE);
+                        break;
+                    case 60:
+                         reponse = mat.createText("Non, ça c'est des rochers !\nEssaie encore !"
+                                ,Color.WHITESMOKE);
+                        break;
+                    case 61:
+                         reponse = mat.createText("Non, ça c'est du carbone !\nEssaie encore !"
+                                ,Color.WHITESMOKE);
+                        break;
+                    case 62:
+                         reponse = mat.createText("Non, ça c'est un arbre !\nEssaie encore !"
+                                ,Color.WHITESMOKE);
+                        break;
+                    case 99:
+                         pageFacile.close();
+                         PageAccueil pageAccueil = new PageAccueil();
+                        break;
+                    default:
+                        reponse = mat.createText("Essaie encore !",Color.WHITESMOKE);
+                        break;
+                        
+                }
+                grid.add(reponse,40,50,50,70);
+            }
+        });
         
         return imageView;
     }

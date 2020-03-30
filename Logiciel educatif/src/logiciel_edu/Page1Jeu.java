@@ -89,7 +89,6 @@ public class Page1Jeu extends Fenetre {
             timeline2.stop();
         switch(sousPage){
             case 1 :
-                
                 timeline.play();
                 t.play();
                 Button bsmoke = mat.createBtn("La fumée","smoke.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,page1Jeu,grid);

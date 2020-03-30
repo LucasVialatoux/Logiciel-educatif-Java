@@ -15,7 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 /**
  *
- * @author p1606751
+ * 
  */
 public class PageAccueil extends Fenetre{
     public TextField user;
@@ -69,7 +69,14 @@ public class PageAccueil extends Fenetre{
         bfacile.setStyle(IDLE_BUTTON_STYLE);
         bfacile.setOnMouseEntered(e -> bfacile.setStyle(HOVERED_BUTTON_STYLE));
         bfacile.setOnMouseExited(e -> bfacile.setStyle(IDLE_BUTTON_STYLE));
-        
+        bfacile.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event){
+                close();
+                pageFacile = new PageFacile();
+                pageFacile.changer(1);
+            }
+        });
         bfacile.setVisible(false);
         
         bmoyen = new Button("Moyen");

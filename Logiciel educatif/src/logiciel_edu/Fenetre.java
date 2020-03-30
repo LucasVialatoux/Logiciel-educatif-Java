@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 public abstract class Fenetre extends Stage {
     
     public static Page1Jeu page1Jeu;
+    public static PageFacile pageFacile;
     public Pane root;
     public Scene scene;
     static final String IDLE_STYLE_APPLI = "-fx-background-color: #a6afb3;-fx-font-size: 2em;-fx-text-fill: white;-fx-padding: 5 30 5 5;";
