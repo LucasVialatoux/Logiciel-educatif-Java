@@ -12,6 +12,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -77,6 +78,8 @@ public class Page1Jeu extends Fenetre {
     }
     
     public void changer(int sousPage){
+        Button bnothing = mat.createBtn("Rien","",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,page1Jeu,grid);
+        bnothing.setVisible(false);
         grid.getChildren().clear();
         if(t != null)
             t.stop();
@@ -89,43 +92,44 @@ public class Page1Jeu extends Fenetre {
                 
                 timeline.play();
                 t.play();
-                Button bsmoke = mat.createBtn("La fumée","smoke.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,page1Jeu);
-                Button bvitre = mat.createBtn("La vitre","vitre.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,51,page1Jeu);
-                Button broue = mat.createBtn("La roue","roue.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,52,page1Jeu);
+                Button bsmoke = mat.createBtn("La fumée","smoke.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,page1Jeu,grid);
+                Button bvitre = mat.createBtn("La vitre","vitre.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,51,page1Jeu,grid);
+                Button broue = mat.createBtn("La roue","roue.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,52,page1Jeu,grid);
                 imageViewV =mat.createImage("voiture.png", 200, 200, 0, 500, 380);
-                aide = mat.createText("Qu'est-ce qui pollue dans une voiture ?");
-                grid.add(bvitre, 5, 70);
-                grid.add(bsmoke, 15, 70);
-                grid.add(broue, 25, 70);
-                grid.add(aide, 7,50,50, 4);
+                aide = mat.createText("Qu'est-ce qui pollue dans une voiture ?",Color.GREEN);
+                grid.add(bvitre, 5, 60);
+                grid.add(bsmoke, 15, 60);
+                grid.add(broue, 25, 60);
+                grid.add(aide, 7,50,50, 2);
                 root.getChildren().add(imageViewV);
                 break;
             case 2 :
                 timeline.play();
                 imageViewA.setOpacity(0);
-                Button byes = mat.createBtn("Oui","good.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,page1Jeu);
-                Button bno = mat.createBtn("Non","bad.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,53,page1Jeu);
-                aide = mat.createText("Est-ce que la fumée est dangereuse pour la santé ?");
+                Button byes = mat.createBtn("Oui","good.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,page1Jeu,grid);
+                Button bno = mat.createBtn("Non","bad.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,53,page1Jeu,grid);
+                aide = mat.createText("Est-ce que la fumée est dangereuse pour la santé ?",Color.GREEN);
                 imageViewV =mat.createImage("voiture.png", 200, 200, 0, 500, 380);
-                grid.add(byes, 15, 70);
-                grid.add(bno, 30, 70);
-                grid.add(aide, 15,50,50, 4);
+                grid.add(byes, 5, 60);
+                grid.add(bnothing, 15, 60);
+                grid.add(bno, 25, 60);
+                grid.add(aide, 7,50,50, 2);
                 root.getChildren().add(imageViewV);
                 break;
             case 3 :
                 timeline.play();
                 imageViewV =mat.createImage("bike.png", 200, 200, 0, 250, 380);
-                ImageView imageViewS2 =mat.createImage("smoke.png", 45, 45, 220.0, 795, 500);
+                ImageView imageViewS2 =mat.createImage("smoke.png", 45, 45, 220.0, 45, 500);
                 ImageView imageViewV1 =mat.createImage("voiture.jpg", 200, 200, 0, 400, 380);
-                ImageView imageViewV2 =mat.createImage("scooter.png", 200, 200, 0, 800, 380);
-                Button bvoiture = mat.createBtn("La voiture","voiture.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,54,page1Jeu);
-                Button bvelo = mat.createBtn("Le vélo","bike.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,4,page1Jeu);
-                Button bscooter = mat.createBtn("Le scooter","scooter.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,55,page1Jeu);
-                aide = mat.createText("Qu'est-ce qui est plus écologique ?");
-                grid.add(bscooter, 5, 70);
-                grid.add(bvoiture, 15, 70);
-                grid.add(bvelo, 25, 70);
-                grid.add(aide, 15,50,50, 4);
+                ImageView imageViewV2 =mat.createImage("scooter.png", 200, 200, 0, 50, 380);
+                Button bvoiture = mat.createBtn("La voiture","voiture.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,54,page1Jeu,grid);
+                Button bvelo = mat.createBtn("Le vélo","bike.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,4,page1Jeu,grid);
+                Button bscooter = mat.createBtn("Le scooter","scooter.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,55,page1Jeu,grid);
+                aide = mat.createText("Qu'est-ce qui est plus écologique ?",Color.GREEN);
+                grid.add(bscooter, 5, 60);
+                grid.add(bvoiture, 15, 60);
+                grid.add(bvelo, 25, 60);
+                grid.add(aide, 15,50,50, 2);
                 timeline2 = new Timeline(new KeyFrame(
                                 Duration.millis(500), 
                                 event-> {
@@ -148,23 +152,24 @@ public class Page1Jeu extends Fenetre {
                 timeline.play();
                 imageViewA.setOpacity(0);
                 imageViewV2 =mat.createImage("dust.png", 60, 60, 0, 1020, 440);
-                imageViewV1 =mat.createImage("co2.png", 90, 90, 0, 700, 400);
+                imageViewV1 =mat.createImage("co2.png", 90, 90, 0, 750, 440);
                 imageViewS2 =mat.createImage("running.png", 150, 150, 0, 900, 350);
-                Button bco2 = mat.createBtn("Je pense que c'est ça","cO2.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,page1Jeu);
-                Button bdust = mat.createBtn("Je pense que c'est ça","dust.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,56,page1Jeu);
+                Button bco2 = mat.createBtn("Je pense que c'est ça","cO2.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,page1Jeu,grid);
+                Button bdust = mat.createBtn("Je pense que c'est ça","dust.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,56,page1Jeu,grid);
                 aide = mat.createText("La fumée de la voiture produit du CO2, c'est ça qui pollue.\n"
-                        + "Sais-tu reconnaître le C02 ?");
+                        + "Sais-tu reconnaître le C02 ?",Color.GREEN);
                 imageViewV =mat.createImage("voiture.png", 200, 200, 0, 500, 380);
-                grid.add(bco2, 15, 70);
-                grid.add(bdust, 30, 70);
-                grid.add(aide, 15,50,50, 4);
+                grid.add(bco2, 5, 60);
+                grid.add(bnothing, 15, 60);
+                grid.add(bdust, 25, 60);
+                grid.add(aide, 15,50,50, 2);
                 root.getChildren().add(imageViewV);
                 root.getChildren().add(imageViewV1);
                 root.getChildren().add(imageViewV2);
                 root.getChildren().add(imageViewS2);
                 break;
             default:
-                aide = mat.createText("Page par défault");
+                aide = mat.createText("Page par défault",Color.GREEN);
                 grid.add(aide, 15,50,50, 4);
                 break;
         }

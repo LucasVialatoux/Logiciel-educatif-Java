@@ -26,14 +26,14 @@ public class PageAccueil extends Fenetre{
     public Button bfacile;
     public Button bmoyen;
     public Button bdif;
-    private static final String IDLE_BUTTON_STYLE = "-fx-background-color: #2EAB4A;-fx-font-size: 2em;-fx-text-fill: white;";
-    private static final String NORM_BUTTON_STYLE = "-fx-background-color: #FF7900;-fx-font-size: 2em;-fx-text-fill: white;";
-    private static final String HOVERED_NORM_BUTTON_STYLE = "-fx-background-color: #ffad66;-fx-font-size: 2em;-fx-text-fill: white;";
-    private static final String HARD_BUTTON_STYLE = "-fx-background-color: #FF0007;-fx-font-size: 2em;-fx-text-fill: white;";
-    private static final String HOVERED_HARD_BUTTON_STYLE = "-fx-background-color: #ff666b;-fx-font-size: 2em;-fx-text-fill: white;";
-    private static final String HOVERED_BUTTON_STYLE = "-fx-background-color: #49d168;-fx-font-size: 2em;-fx-text-fill: white;";
-    private static final String IDLE_BUTTON_STYLE_AIDE = "-fx-background-color:#f58d42;-fx-font-size: 2em;-fx-text-fill: white;";
-    private static final String HOVERED_BUTTON_STYLE_AIDE = "-fx-background-color:#faa05f;-fx-font-size: 2em;-fx-text-fill: white;";
+    public static final String IDLE_BUTTON_STYLE = "-fx-background-color: #2EAB4A;-fx-font-size: 2em;-fx-text-fill: white;";
+    public static final String NORM_BUTTON_STYLE = "-fx-background-color: #FF7900;-fx-font-size: 2em;-fx-text-fill: white;";
+    public static final String HOVERED_NORM_BUTTON_STYLE = "-fx-background-color: #ffad66;-fx-font-size: 2em;-fx-text-fill: white;";
+    public static final String HARD_BUTTON_STYLE = "-fx-background-color: #FF0007;-fx-font-size: 2em;-fx-text-fill: white;";
+    public static final String HOVERED_HARD_BUTTON_STYLE = "-fx-background-color: #ff666b;-fx-font-size: 2em;-fx-text-fill: white;";
+    public static final String HOVERED_BUTTON_STYLE = "-fx-background-color: #49d168;-fx-font-size: 2em;-fx-text-fill: white;";
+    public static final String IDLE_BUTTON_STYLE_AIDE = "-fx-background-color:#f58d42;-fx-font-size: 2em;-fx-text-fill: white;";
+    public static final String HOVERED_BUTTON_STYLE_AIDE = "-fx-background-color:#faa05f;-fx-font-size: 2em;-fx-text-fill: white;";
     
     public PageAccueil(){
         initialisation();
@@ -69,14 +69,7 @@ public class PageAccueil extends Fenetre{
         bfacile.setStyle(IDLE_BUTTON_STYLE);
         bfacile.setOnMouseEntered(e -> bfacile.setStyle(HOVERED_BUTTON_STYLE));
         bfacile.setOnMouseExited(e -> bfacile.setStyle(IDLE_BUTTON_STYLE));
-        bfacile.setOnMousePressed(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event){
-                close();
-                page1Jeu = new Page1Jeu();
-                page1Jeu.changer(1);
-            }
-        });
+        
         bfacile.setVisible(false);
         
         bmoyen = new Button("Moyen");
@@ -84,6 +77,14 @@ public class PageAccueil extends Fenetre{
         bmoyen.setStyle(NORM_BUTTON_STYLE);
         bmoyen.setOnMouseEntered(e -> bmoyen.setStyle(HOVERED_NORM_BUTTON_STYLE));
         bmoyen.setOnMouseExited(e -> bmoyen.setStyle(NORM_BUTTON_STYLE));
+        bmoyen.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event){
+                close();
+                page1Jeu = new Page1Jeu();
+                page1Jeu.changer(1);
+            }
+        });
         bmoyen.setVisible(false);
         
         bdif = new Button("Difficile");

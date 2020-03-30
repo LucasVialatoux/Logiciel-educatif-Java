@@ -7,18 +7,23 @@ package logiciel_edu;
 
 import java.io.File;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import static logiciel_edu.Fenetre.page1Jeu;
+import static logiciel_edu.PageAccueil.HOVERED_BUTTON_STYLE;
+import static logiciel_edu.PageAccueil.IDLE_BUTTON_STYLE;
 
 /**
  *
@@ -26,13 +31,15 @@ import javafx.stage.Stage;
  */
 public class Materials{
     public Fenetre fenetre;
+    private Text reponse;
     
     public Materials(){
         
     }
     
-    public Button createBtn(String name, String image, String btnStyle, String btnHoverStyle, int pageToCall,Page1Jeu page){
+    public Button createNextBtn(String name, String image, String btnStyle, String btnHoverStyle, int pageToCall,Page1Jeu page){
         Button btn = new Button(name);
+        Materials mat = new Materials();
         btn.setPrefWidth(300);
         btn.setStyle(btnStyle);
         btn.setOnMouseEntered(e -> btn.setStyle(btnHoverStyle));
@@ -42,88 +49,108 @@ public class Materials{
             public void handle(MouseEvent event){
                 Stage stage = (Stage) btn.getScene().getWindow();
                 // do what you have to do
+                page.changer(pageToCall);
+            }
+        });
+        String imageURIRoue = new File(image).toURI().toString();
+        ImageView imageView = new ImageView(imageURIRoue);
+        imageView.setFitWidth(45); 
+        imageView.setFitHeight(45);
+        imageView.setLayoutX(685);
+        imageView.setLayoutY(480);
+        btn.setGraphic(imageView);
+        
+        return btn;
+    }
+    
+    public Button createBtn(String name, String image, String btnStyle, String btnHoverStyle, int pageToCall,Page1Jeu page,GridPane grid){
+        
+        Button btn = new Button(name);
+        final Button btnNext;
+        Materials mat = new Materials();
+        btn.setPrefWidth(300);
+        btn.setStyle(btnStyle);
+        btn.setOnMouseEntered(e -> btn.setStyle(btnHoverStyle));
+        btn.setOnMouseExited(e -> btn.setStyle(btnStyle));
+        btn.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event){
+                Stage stage = (Stage) btn.getScene().getWindow();
+                Button btnNext;
+                grid.getChildren().remove(reponse);
+                for (Node node : grid.getChildren()) {
+                    if (node instanceof Button
+                     && grid.getColumnIndex(node) == 25
+                     && grid.getRowIndex(node) == 100) {
+                        Button btnDelete=(Button) node;
+                        grid.getChildren().remove(btnDelete);
+                        break;
+                    }
+                }
+                // do what you have to do
                 //stage.close();
                 switch (pageToCall){
                     case 1:
                         page.changer(1);
                         break;
                     case 2:
-                        Alert alertB = createAlert("BRAVO !", 
-                                "C'est bien la fumée, bravo !", 
-                                "Allez, passe vite à la question suivante !",
-                                AlertType.INFORMATION);
-                        alertB.showAndWait();
-                        page.changer(2);
+                        reponse = mat.createText("C'est bien la fumée, bravo !\n"
+                                + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
+                        btnNext= createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,page1Jeu);
+                        grid.add(btnNext, 25, 100);
                         break;
                     case 3:
-                        Alert alertB1 = createAlert("BRAVO !", 
-                                "La fumée est effectivement dangereuse pour nous !", 
-                                "Allez, passe vite à la question suivante !",
-                                AlertType.INFORMATION);
-                        alertB1.showAndWait();
-                        page.changer(3);
+                        reponse = mat.createText("La fumée est effectivement dangereuse pour nous !\n"
+                                + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
+                        btnNext = createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,page1Jeu);
+                        grid.add(btnNext, 25, 100);
                         break;
                     case 4:
-                        Alert alertB2 = createAlert("BRAVO !", 
-                                "Le vélo est le plus écologique !\nEffectivement il ne produit aucune fumée.", 
-                                "Allez, passe vite à la question suivante !",
-                                AlertType.INFORMATION);
-                        alertB2.showAndWait();
-                        page.changer(4);
+                        reponse = mat.createText("Le vélo est le plus écologique ! \nEffectivement il ne produit aucune fumée.\n"
+                                + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
+                        btnNext = createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,4,page1Jeu);
+                        grid.add(btnNext, 25, 100);
                         break;
                     case 5:
-                        Alert alertB3 = createAlert("BRAVO !", 
-                                "Bien joué ! C'est bien ça le CO2 :-)", 
-                                "Allez, passe vite à la question suivante !",
-                                AlertType.INFORMATION);
-                        alertB3.showAndWait();
-                        page.changer(4);
+                        reponse = mat.createText("Bien joué ! C'est bien ça le CO2 :-)\n"
+                                + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
+                        btnNext = createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,4,page1Jeu);
+                        grid.add(btnNext, 25, 100);
                         break;
                     case 51:
-                        Alert alert1 = createAlert("Tu y es presque :-)", 
-                                "Ce n'est pas la vitre, malheureusement", 
-                                "La vitre est utile pour regarder dehors, mais ne pollue pas.\nEssaie encore ! Courage !",
-                                AlertType.WARNING);
-                        alert1.showAndWait();
+                        reponse = mat.createText("Tu y es presque :-)\n"
+                                + "La vitre est utile pour regarder dehors, mais ne pollue pas.\n"
+                                + "Essaie encore ! Courage !",Color.WHITESMOKE);
                         break;
                     case 52:
-                        Alert alert2 = createAlert("Tu y es presque :-)", 
-                                "Ce n'est pas la roue, malheureusement", 
-                                "La roue permet à la voiture de rouler mais ne polue pas.\nEssaie encore ! Courage !",
-                                AlertType.WARNING);
-                        alert2.showAndWait();
+                        reponse = mat.createText("Tu y es presque :-)\n"
+                                + "La roue permet à la voiture de rouler mais ne polue pas.\n"
+                                + "Essaie encore ! Courage !",Color.WHITESMOKE);
                         break;
                      case 53:
-                        Alert alert3 = createAlert("Tu y es presque :-)", 
-                                "Attention, la fumée est bien dangereuse pour la santé !", 
-                                "Essaie encore ! Courage !",
-                                AlertType.WARNING);
-                        alert3.showAndWait();
+                         reponse = mat.createText("Tu y es presque :-)\n"
+                                + "Attention, la fumée est bien dangereuse pour la santé !\n"
+                                + "Essaie encore ! Courage !",Color.WHITESMOKE);
                         break;
                      case 54:
-                        Alert alert4 = createAlert("Tu y es presque :-)", 
-                                "Malheureusement ce n'est pas la voiture.. ", 
-                                "On a vu ensemble que la voiture pollue à cause de la fumée \nEssaie encore ! Courage !",
-                                AlertType.WARNING);
-                        alert4.showAndWait();
+                         reponse = mat.createText("Tu y es presque :-)\n"
+                                + "On a vu ensemble que la voiture pollue à cause de la fumée\n"
+                                + "Essaie encore ! Courage !",Color.WHITESMOKE);
                         break;
                      case 55:
-                        Alert alert5 = createAlert("Tu y es presque :-)", 
-                                "Attention, le scooter pollue aussi.", 
-                                "Le scooter produit aussi de la fumée.\nEssaie encore ! Courage !",
-                                AlertType.WARNING);
-                        alert5.showAndWait();
+                        reponse = mat.createText("Tu y es presque :-)\n"
+                                + "Attention, le scooter pollue aussi, il produit aussi de la fumée.\n"
+                                + "Essaie encore ! Courage !",Color.WHITESMOKE);
                         break;
                      case 56:
-                        Alert alert6 = createAlert("Tu y es presque :-)", 
-                                "Attention, c'est de la poussière, et pas du CO2.", 
-                                "Observe le CO2 proche de la voiture.\nEssaie encore ! Courage !",
-                                AlertType.WARNING);
-                        alert6.showAndWait();
+                         reponse = mat.createText("Tu y es presque :-) Attention, c'est\n"
+                                + "de la poussière. Essaie encore ! Courage !"
+                                ,Color.WHITESMOKE);
                         break;
                     default:
                         
                 }
+                grid.add(reponse,10,50,50,62);
             }
         });
         String imageURIRoue = new File(image).toURI().toString();
@@ -145,15 +172,14 @@ public class Materials{
     }
     
     
-    public Text createText(String myText){
+    public Text createText(String myText,Color col){
         //Creating a Text object 
         Text text = new Text();
         text.setText(myText);
         //Setting font to the text 
         text.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20)); 
         //Setting the color 
-        text.setFill(Color.GREEN);
-        
+        text.setFill(col);
         return text;
     }
     
