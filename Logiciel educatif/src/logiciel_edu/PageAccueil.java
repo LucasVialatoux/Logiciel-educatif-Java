@@ -27,7 +27,10 @@ public class PageAccueil extends Fenetre{
     public Button bfacile;
     public Button bmoyen;
     public Button bcours;
+    public Button binteractif;
     
+    public static final String HOVERED_INTER_STYLE = "-fx-background-color: #506cfa;-fx-font-size: 2em;-fx-text-fill: white;";
+    public static final String IDLE_INTER_STYLE = "-fx-background-color: #3452eb;-fx-font-size: 2em;-fx-text-fill: white;";
     public static final String HOVERED_HOME_STYLE = "-fx-background-color: #0579ff;-fx-font-size: 2em;-fx-text-fill: white;";
     public static final String IDLE_HOME_STYLE = "-fx-background-color: #0771eb;-fx-font-size: 2em;-fx-text-fill: white;";
     public static final String IMG_CLICK_STYLE = "-fx-border-color: #0771eb;-fx-border-style: solid;-fx-border-width: 5;";
@@ -56,6 +59,7 @@ public class PageAccueil extends Fenetre{
         grid.add(bfacile, 46, 35);
         grid.add(bmoyen, 46, 45);
         grid.add(bcours, 46, 55);
+        grid.add(binteractif, 46, 65);
         btnConnexion.setOnAction(new Menue(this));
         root.getChildren().add(grid);
         scene.addEventFilter(KeyEvent.KEY_PRESSED,new ActionEntree(this));
@@ -113,6 +117,21 @@ public class PageAccueil extends Fenetre{
             }
         });
         bcours.setVisible(false);
+        
+        binteractif = new Button("Cours interactif");
+        binteractif.setPrefWidth(300);
+        binteractif.setStyle(IDLE_INTER_STYLE);
+        binteractif.setOnMouseEntered(e -> binteractif.setStyle(HOVERED_INTER_STYLE));
+        binteractif.setOnMouseExited(e -> binteractif.setStyle(IDLE_INTER_STYLE));
+        binteractif.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event){
+                close();
+                //pageCours = new PageCours();
+                //pageCours.changer(1);
+            }
+        });
+        binteractif.setVisible(false);
     }
     
      public class Menue implements EventHandler<ActionEvent>{
@@ -126,6 +145,7 @@ public class PageAccueil extends Fenetre{
             this.p.bfacile.setVisible(true);
             this.p.bmoyen.setVisible(true);
             this.p.bcours.setVisible(true);
+            this.p.binteractif.setVisible(true);
         }
     }
    
@@ -143,12 +163,14 @@ public class PageAccueil extends Fenetre{
                 this.p.bfacile.setVisible(true);
                 this.p.bmoyen.setVisible(true);
                 this.p.bcours.setVisible(true);
+                this.p.binteractif.setVisible(true);
               }
               else if(e.getCode() == KeyCode.ESCAPE && !this.p.btnConnexion.isVisible()){
                 this.p.btnConnexion.setVisible(true);
                 this.p.bfacile.setVisible(false);
                 this.p.bmoyen.setVisible(false);
                 this.p.bcours.setVisible(false);
+                this.p.binteractif.setVisible(false);
               }
         }
     }

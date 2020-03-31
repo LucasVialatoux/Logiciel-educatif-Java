@@ -25,7 +25,7 @@ public class Page1Jeu extends Fenetre {
     private static final String IDLE_BUTTON_STYLE = "-fx-background-color: #3b7af7;-fx-font-size: 2em;-fx-text-fill: white;";
     private static final String HOVERED_BUTTON_STYLE = "-fx-background-color: #6898f7;-fx-font-size: 2em;-fx-text-fill: white;";
     private Text aide;
-    private final Materials mat= new Materials();;
+    private final Materials mat= new Materials();
     private final GridPane grid;
     private Timeline t, timeline, timeline2;
     private ImageView imageViewA,imageViewV;

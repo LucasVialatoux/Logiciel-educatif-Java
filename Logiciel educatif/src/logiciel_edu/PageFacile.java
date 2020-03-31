@@ -120,7 +120,7 @@ public class PageFacile extends Fenetre {
                 imageViewS.setOpacity(0);
                 StackPane imageViewV1 =mat.createImageToClick("bike.png", 100, 100, 0, 250, 380,4,pageFacile,grid);
                 imageViewS =mat.createImageToClick("smoke.png", 45, 45, 65.0, 685, 480,53,pageFacile,grid);
-                StackPane imageViewS2 =mat.createImageToClick("smoke.png", 45, 45, 220.0, 45, 520,53,pageFacile,grid);
+                StackPane imageViewS2 =mat.createImageToClick("smoke.png", 45, 45, 220.0, 40, 520,53,pageFacile,grid);
                 imageViewV =mat.createImageToClick("voiture.png", 200, 200, 0, 500, 380,54,pageFacile,grid);
                 StackPane imageViewV2 =mat.createImageToClick("scooter.png", 150, 150, 0, 50, 430,55,pageFacile,grid);
                 aide = mat.createText("Clique sur ce qui est le plus écologique",Color.GREEN);

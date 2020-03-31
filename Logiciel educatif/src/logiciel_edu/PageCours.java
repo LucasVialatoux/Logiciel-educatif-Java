@@ -33,7 +33,8 @@ public class PageCours extends Fenetre {
     private final Materials mat= new Materials();;
     private final GridPane grid = new GridPane();;
     private Timeline t, timeline, timeline2;
-    private ImageView imageViewA,imageViewV,imageViewV1,imageViewV2;
+    private ImageView imageViewA,imageViewV,imageViewV1,imageViewV2,imageViewV3
+            ,imageViewS2,imageViewS3,imageViewS4;
     //ImageViews
     private ImageView imageViewS =mat.createImage("smoke.png", 45, 45, 65.0, 685, 480);
     private final ImageView imageViewR =mat.createImage("route.jpg", 1200, 675, 0, 0, 0);
@@ -129,6 +130,59 @@ public class PageCours extends Fenetre {
                 root.getChildren().add(imageViewV1);
                 root.getChildren().add(imageViewV2);
                 root.getChildren().add(imageViewS);
+                root.getChildren().add(grid);
+                break;
+            case 3 :
+                clearAndSetBackground(imageViewR);
+                imageViewS.setOpacity(0);
+                imageViewV =mat.createImage("voiture.png", 200, 200, 0, 100, 380);
+                imageViewV3 =mat.createImage("voiture.png", 200, 200, 0, 500, 380);
+                imageViewV1 =mat.createImage("tree.png", 100, 100, 0, 500, 380);
+                imageViewV2 =mat.createImage("tree.png", 100, 100, 0, 800, 380);
+                imageViewS =mat.createImage("smokeco2.png", 45, 45, 0, 280, 465);
+                imageViewS2 =mat.createImage("smokeco2.png", 45, 45, 0, 680, 465);
+                imageViewS3 =mat.createImage("change.png", 70, 70, 0, 450, 380);
+                imageViewS4 =mat.createImage("change.png", 70, 70, 0, 750, 380);
+                aide = mat.createText("Dans la nature, les arbres absorbent le CO² qui est\n"
+                        + "notamment produit par les voitures. Et en échange\n"
+                        + "les arbres produisent de l'oxygène (écrit O²).",Color.GREEN);
+                btnNext= createNextBtn("Prochaine page","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,this);
+                btnHome= createNextBtn("Accueil","home.png",IDLE_HOME_STYLE,HOVERED_HOME_STYLE,99,this);
+                grid.add(btnNext, 43, 25,16,3);
+                grid.add(btnHome, 2, 25,16,3);
+                grid.add(aide,5,10, 50,2);
+                timeline = new Timeline(new KeyFrame(
+                                Duration.millis(500), 
+                                event-> {
+                                        if (imageViewS.getOpacity()==1) {
+                                                imageViewS.setOpacity(0);	
+                                        } else {
+                                                imageViewS.setOpacity(1);
+                                        }
+                                }
+                        ));
+                timeline.setCycleCount(Animation.INDEFINITE);
+                timeline.play();
+                timeline2 = new Timeline(new KeyFrame(
+                                Duration.millis(500), 
+                                event-> {
+                                        if (imageViewS2.getOpacity()==1) {
+                                                imageViewS2.setOpacity(0);	
+                                        } else {
+                                                imageViewS2.setOpacity(1);
+                                        }
+                                }
+                        ));
+                timeline2.setCycleCount(Animation.INDEFINITE);
+                timeline2.play();
+                root.getChildren().add(imageViewV);
+                root.getChildren().add(imageViewV1);
+                root.getChildren().add(imageViewV2);
+                root.getChildren().add(imageViewV3);
+                root.getChildren().add(imageViewS);
+                root.getChildren().add(imageViewS2);
+                root.getChildren().add(imageViewS3);
+                root.getChildren().add(imageViewS4);
                 root.getChildren().add(grid);
                 break;
             case 99:
