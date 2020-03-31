@@ -174,7 +174,7 @@ public class Page1Jeu extends Fenetre {
                 imageViewV2 =mat.createImage("oxygen.png", 90, 90, 0, 500, 450);
                 imageViewV1 =mat.createImage("cave.png", 150, 150, 0, 700, 550);
                 imageViewS2 =mat.createImage("carbone.png", 60, 60, 0, 700, 550);
-                Button bo2carbone = mat.createBtn("Je pense que c'est ça","o2carbone.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,page1Jeu,grid);
+                Button bo2carbone = mat.createBtn("Je pense que c'est ça","o2carbone.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,6,page1Jeu,grid);
                 Button bo2 = mat.createBtn("Je pense que c'est ça","o2.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,57,page1Jeu,grid);
                 Button bcarbone = mat.createBtn("Je pense que c'est ça","carbone.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,58,page1Jeu,grid);
                 aide = mat.createText("Le CO2 est constituée de carbone et d'oxygène.\n"
@@ -213,6 +213,10 @@ public class Page1Jeu extends Fenetre {
                 root.getChildren().add(imageViewV1);
                 root.getChildren().add(imageViewV2);
                 root.getChildren().add(imageViewS2);
+                break;
+            case 99:
+                page1Jeu.close();
+                PageAccueil pageAccueil = new PageAccueil();
                 break;
             default:
                 aide = mat.createText("Page par défault",Color.GREEN);

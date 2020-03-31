@@ -153,7 +153,7 @@ public class PageFacile extends Fenetre {
                 clearAndSetBackground(imageViewR,imageViewS);
                 imageViewS.setOpacity(0);
                 imageViewA.setOpacity(0);
-                imageViewV2 =mat.createImageToClick("oxygen.png", 90, 90, 0, 500, 450,5,pageFacile,grid);
+                imageViewV2 =mat.createImageToClick("oxygen.png", 90, 90, 0, 500, 450,6,pageFacile,grid);
                 imageViewV1 =mat.createImageToClick("cave.png", 150, 150, 0, 600, 550,60,pageFacile,grid);
                 imageViewS2 =mat.createImageToClick("carbone.png", 60, 60, 0, 700, 550,61,pageFacile,grid);
                 aide = mat.createText("Trouve l'oxygène",Color.GREEN);
@@ -175,6 +175,10 @@ public class PageFacile extends Fenetre {
                 root.getChildren().add(imageViewV1);
                 root.getChildren().add(imageViewV2);
                 root.getChildren().add(imageViewS2);
+                break;
+            case 99:
+                pageFacile.close();
+                PageAccueil pageAccueil = new PageAccueil();
                 break;
             default:
                 aide = mat.createText("Page par défault",Color.GREEN);

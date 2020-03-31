@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import static logiciel_edu.Fenetre.pageCours;
 /**
  *
  * 
@@ -25,12 +26,16 @@ public class PageAccueil extends Fenetre{
     public Button btnConnexion;
     public Button bfacile;
     public Button bmoyen;
-    public Button bdif;
+    public Button bcours;
+    
+    public static final String HOVERED_HOME_STYLE = "-fx-background-color: #0579ff;-fx-font-size: 2em;-fx-text-fill: white;";
+    public static final String IDLE_HOME_STYLE = "-fx-background-color: #0771eb;-fx-font-size: 2em;-fx-text-fill: white;";
+    
     public static final String IDLE_BUTTON_STYLE = "-fx-background-color: #2EAB4A;-fx-font-size: 2em;-fx-text-fill: white;";
     public static final String NORM_BUTTON_STYLE = "-fx-background-color: #FF7900;-fx-font-size: 2em;-fx-text-fill: white;";
     public static final String HOVERED_NORM_BUTTON_STYLE = "-fx-background-color: #ffad66;-fx-font-size: 2em;-fx-text-fill: white;";
-    public static final String HARD_BUTTON_STYLE = "-fx-background-color: #FF0007;-fx-font-size: 2em;-fx-text-fill: white;";
-    public static final String HOVERED_HARD_BUTTON_STYLE = "-fx-background-color: #ff666b;-fx-font-size: 2em;-fx-text-fill: white;";
+    public static final String HARD_BUTTON_STYLE = "-fx-background-color: #36a3d1;-fx-font-size: 2em;-fx-text-fill: white;";
+    public static final String HOVERED_HARD_BUTTON_STYLE = "-fx-background-color: #45bbed;-fx-font-size: 2em;-fx-text-fill: white;";
     public static final String HOVERED_BUTTON_STYLE = "-fx-background-color: #49d168;-fx-font-size: 2em;-fx-text-fill: white;";
     public static final String IDLE_BUTTON_STYLE_AIDE = "-fx-background-color:#f58d42;-fx-font-size: 2em;-fx-text-fill: white;";
     public static final String HOVERED_BUTTON_STYLE_AIDE = "-fx-background-color:#faa05f;-fx-font-size: 2em;-fx-text-fill: white;";
@@ -50,7 +55,7 @@ public class PageAccueil extends Fenetre{
         grid.add(btnConnexion, 46, 35);
         grid.add(bfacile, 46, 35);
         grid.add(bmoyen, 46, 45);
-        grid.add(bdif, 46, 55);
+        grid.add(bcours, 46, 55);
         btnConnexion.setOnAction(new Menue(this));
         root.getChildren().add(grid);
         scene.addEventFilter(KeyEvent.KEY_PRESSED,new ActionEntree(this));
@@ -94,12 +99,20 @@ public class PageAccueil extends Fenetre{
         });
         bmoyen.setVisible(false);
         
-        bdif = new Button("Difficile");
-        bdif.setPrefWidth(300);
-        bdif.setStyle(HARD_BUTTON_STYLE);
-        bdif.setOnMouseEntered(e -> bdif.setStyle(HOVERED_HARD_BUTTON_STYLE));
-        bdif.setOnMouseExited(e -> bdif.setStyle(HARD_BUTTON_STYLE));
-        bdif.setVisible(false);
+        bcours = new Button("Cours");
+        bcours.setPrefWidth(300);
+        bcours.setStyle(HARD_BUTTON_STYLE);
+        bcours.setOnMouseEntered(e -> bcours.setStyle(HOVERED_HARD_BUTTON_STYLE));
+        bcours.setOnMouseExited(e -> bcours.setStyle(HARD_BUTTON_STYLE));
+        bcours.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event){
+                close();
+                pageCours = new PageCours();
+                pageCours.changer(1);
+            }
+        });
+        bcours.setVisible(false);
     }
     
      public class Menue implements EventHandler<ActionEvent>{
@@ -112,7 +125,7 @@ public class PageAccueil extends Fenetre{
             this.p.btnConnexion.setVisible(false);
             this.p.bfacile.setVisible(true);
             this.p.bmoyen.setVisible(true);
-            this.p.bdif.setVisible(true);
+            this.p.bcours.setVisible(true);
         }
     }
    
@@ -129,13 +142,13 @@ public class PageAccueil extends Fenetre{
                 this.p.btnConnexion.setVisible(false);
                 this.p.bfacile.setVisible(true);
                 this.p.bmoyen.setVisible(true);
-                this.p.bdif.setVisible(true);
+                this.p.bcours.setVisible(true);
               }
               else if(e.getCode() == KeyCode.ESCAPE && !this.p.btnConnexion.isVisible()){
                 this.p.btnConnexion.setVisible(true);
                 this.p.bfacile.setVisible(false);
                 this.p.bmoyen.setVisible(false);
-                this.p.bdif.setVisible(false);
+                this.p.bcours.setVisible(false);
               }
         }
     }
