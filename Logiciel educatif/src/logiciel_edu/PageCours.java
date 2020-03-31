@@ -35,7 +35,7 @@ public class PageCours extends Fenetre {
     private Timeline t, timeline, timeline2;
     private ImageView imageViewA,imageViewV,imageViewV1,imageViewV2;
     //ImageViews
-    private ImageView imageViewS =mat.createImageToClick("smoke.png", 45, 45, 65.0, 685, 480,2,pageFacile,grid);
+    private ImageView imageViewS =mat.createImage("smoke.png", 45, 45, 65.0, 685, 480);
     private final ImageView imageViewR =mat.createImage("route.jpg", 1200, 675, 0, 0, 0);
     
     public PageCours(){

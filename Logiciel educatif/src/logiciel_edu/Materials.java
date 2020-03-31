@@ -15,6 +15,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -25,6 +27,7 @@ import static logiciel_edu.Fenetre.page1Jeu;
 import static logiciel_edu.Fenetre.pageFacile;
 import static logiciel_edu.PageAccueil.HOVERED_BUTTON_STYLE;
 import static logiciel_edu.PageAccueil.IDLE_BUTTON_STYLE;
+import static logiciel_edu.PageAccueil.IMG_CLICK_STYLE;
 
 /**
  *
@@ -208,6 +211,7 @@ public class Materials{
         
         return btn;
     }
+    
     public Alert createAlert(String title, String headerText, String content, AlertType type){
         Alert alert = new Alert(type);
         alert.setTitle(title);
@@ -247,22 +251,28 @@ public class Materials{
         return imageView;
     }
     
-    public ImageView createImageToClick(String myImage,int width, int height, double rotate,int layoutX, int layoutY,
+    public StackPane createImageToClick(String myImage,int width, int height, double rotate,int layoutX, int layoutY,
             int pageToCall,PageFacile page,GridPane grid){
+        StackPane stk = new StackPane();
         Materials mat = new Materials();
         String imageURI = new File(myImage).toURI().toString(); 
         Image image = new Image(imageURI);
         ImageView imageView = new ImageView(image); 
         imageView.setFitWidth(width); 
         imageView.setFitHeight(height);
+        stk.getChildren().add(imageView);
+        //stk.setPrefSize(width, height);
         if(rotate!=0){
-            imageView.setRotate(rotate);
+            //imageView.setRotate(rotate);
+            stk.setRotate(rotate);
         }
         if(layoutX != 0){
-            imageView.setLayoutX(layoutX);
+            //imageView.setLayoutX(layoutX);
+            stk.setLayoutX(layoutX);
         }
         if (layoutY !=0){
-            imageView.setLayoutY(layoutY);
+            //imageView.setLayoutY(layoutY);
+            stk.setLayoutY(layoutY);
         }
         imageView.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
@@ -309,7 +319,7 @@ public class Materials{
                         grid.add(btnNext, 75, 130);
                         break;
                     case 51:
-                         reponse = mat.createText("Non, ce n'est pas la voiture !\nEssaie encore !"
+                         reponse = mat.createText("Non, ce n'est pas la fumée !\nEssaie encore !"
                                 ,Color.WHITESMOKE);
                         break;
                     case 52:
@@ -369,6 +379,7 @@ public class Materials{
             }
         });
         
-        return imageView;
+        stk.setStyle("-fx-border-color: #0771eb;-fx-border-style: solid;");
+        return stk;
     }
 }

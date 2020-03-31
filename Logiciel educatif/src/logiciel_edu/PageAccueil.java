@@ -30,7 +30,7 @@ public class PageAccueil extends Fenetre{
     
     public static final String HOVERED_HOME_STYLE = "-fx-background-color: #0579ff;-fx-font-size: 2em;-fx-text-fill: white;";
     public static final String IDLE_HOME_STYLE = "-fx-background-color: #0771eb;-fx-font-size: 2em;-fx-text-fill: white;";
-    
+    public static final String IMG_CLICK_STYLE = "-fx-border-color: #0771eb;-fx-border-style: solid;-fx-border-width: 5;";
     public static final String IDLE_BUTTON_STYLE = "-fx-background-color: #2EAB4A;-fx-font-size: 2em;-fx-text-fill: white;";
     public static final String NORM_BUTTON_STYLE = "-fx-background-color: #FF7900;-fx-font-size: 2em;-fx-text-fill: white;";
     public static final String HOVERED_NORM_BUTTON_STYLE = "-fx-background-color: #ffad66;-fx-font-size: 2em;-fx-text-fill: white;";
