@@ -127,8 +127,7 @@ public class PageAccueil extends Fenetre{
             @Override
             public void handle(MouseEvent event){
                 close();
-                //pageCours = new PageCours();
-                //pageCours.changer(1);
+                jeuMoteur = new JeuMoteur();
             }
         });
         binteractif.setVisible(false);

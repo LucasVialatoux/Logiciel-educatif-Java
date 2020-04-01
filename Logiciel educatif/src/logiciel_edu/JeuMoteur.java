@@ -65,7 +65,7 @@ public class JeuMoteur extends Fenetre {
                             moteur.setImage(image);
                             demande.setText("Merci je vais pouvoir t'expliquer comment\n"
                                     + "le moteur fonctionne.");
-                                btnNext();
+                                btnNext("Voir la vidéo");
                         }
                     }
                 }
@@ -116,8 +116,8 @@ public class JeuMoteur extends Fenetre {
         root.getChildren().add(moteur);
     }
     
-     public void btnNext(){
-        btn = new Button("suivant");
+     public void btnNext(String name){
+        btn = new Button(name);
         Materials mat = new Materials();
         btn.setPrefWidth(300);
         btn.setStyle(IDLE_BUTTON_STYLE);
@@ -129,9 +129,9 @@ public class JeuMoteur extends Fenetre {
                if(premierBtn){
                    premierBtn=false;
                    debutPhase();
-                   
                }else{
-                   
+                   jeuMoteur.close();
+                   PageAccueil pageAccueil = new PageAccueil();
                }
             }
         });
@@ -279,7 +279,7 @@ public class JeuMoteur extends Fenetre {
         Timeline t = new Timeline(new KeyFrame(
         		Duration.millis(5000), 
         		event-> {
-                                btnNext();
+                                btnNext("Menu");
         		}
 		));
         t.play();

@@ -12,8 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //PageAccueil pageAccueil = new PageAccueil();
-        new JeuMoteur();
+        PageAccueil pageAccueil = new PageAccueil();
     }
 
 
