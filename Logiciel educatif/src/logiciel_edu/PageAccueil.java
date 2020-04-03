@@ -45,7 +45,7 @@ public class PageAccueil extends Fenetre{
     
     public PageAccueil(){
         initialisation();
-        String imageURI2 = new File("fond.png").toURI().toString(); 
+        String imageURI2 = new File("./image/fond.png").toURI().toString(); 
         Image image2 = new Image(imageURI2);
         ImageView imageView = new ImageView(image2); 
         imageView.setFitWidth(1200); 

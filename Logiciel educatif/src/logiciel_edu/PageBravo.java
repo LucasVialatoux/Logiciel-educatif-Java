@@ -5,6 +5,7 @@
  */
 package logiciel_edu;
 
+import java.io.File;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -24,7 +25,7 @@ public class PageBravo extends Fenetre {
     
     private final GridPane grid = new GridPane();
     private final Materials mat= new Materials();
-    private final ImageView imageViewR =mat.createImage("route.jpg", 1200, 675, 0, 0, 0);
+    private final ImageView imageViewR =mat.createImage("./image/route.jpg", 1200, 675, 0, 0, 0);
     
     public PageBravo(String niveau){
         grid.setVgap(20);
@@ -51,6 +52,13 @@ public class PageBravo extends Fenetre {
                 PageAccueil pageAccueil = new PageAccueil();
             }
         });
+        String imageURIRoue = new File("./image/home.png").toURI().toString();
+        ImageView imageView = new ImageView(imageURIRoue);
+        imageView.setFitWidth(45); 
+        imageView.setFitHeight(45);
+        imageView.setLayoutX(685);
+        imageView.setLayoutY(480);
+        btnHome.setGraphic(imageView);
         grid.add(btnHome, 17, 22,16,3);
         root.getChildren().setAll(imageViewR);
         root.getChildren().add(grid);

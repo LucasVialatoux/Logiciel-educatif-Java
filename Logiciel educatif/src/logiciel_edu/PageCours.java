@@ -36,8 +36,8 @@ public class PageCours extends Fenetre {
     private ImageView imageViewA,imageViewV,imageViewV1,imageViewV2,imageViewV3
             ,imageViewS2,imageViewS3,imageViewS4;
     //ImageViews
-    private ImageView imageViewS =mat.createImage("smoke.png", 45, 45, 65.0, 685, 480);
-    private final ImageView imageViewR =mat.createImage("route.jpg", 1200, 675, 0, 0, 0);
+    private ImageView imageViewS =mat.createImage("./image/smoke.png", 45, 45, 65.0, 685, 480);
+    private final ImageView imageViewR =mat.createImage("./image/route.jpg", 1200, 675, 0, 0, 0);
     
     public PageCours(){
         //Grid
@@ -68,13 +68,13 @@ public class PageCours extends Fenetre {
         switch(sousPage){
             case 1 :
                 imageViewS.setOpacity(0);
-                imageViewA =mat.createImage("red arrow.png", 100, 53, 320.0, 685, 440);
-                imageViewV =mat.createImage("voiture.png", 200, 200, 0, 500, 380);
-                imageViewS =mat.createImage("smoke.png", 45, 45, 65.0, 685, 480);
+                imageViewA =mat.createImage("./image/red arrow.png", 100, 53, 320.0, 685, 440);
+                imageViewV =mat.createImage("./image/voiture.png", 200, 200, 0, 500, 380);
+                imageViewS =mat.createImage("./image/smoke.png", 45, 45, 65.0, 685, 480);
                 aide = mat.createText("La voiture, pour avancer, produit de la fumée, elle est identifiable\n"
                         + "ici car elle clignote. Cette fumée est dangereuse pour notre santé.",Color.GREEN);
-                btnNext= createNextBtn("Prochaine page","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,this);
-                btnHome= createNextBtn("Accueil","home.png",IDLE_HOME_STYLE,HOVERED_HOME_STYLE,99,this);
+                btnNext= createNextBtn("Prochaine page","./image/next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,this);
+                btnHome= createNextBtn("Accueil","./image/home.png",IDLE_HOME_STYLE,HOVERED_HOME_STYLE,99,this);
                 grid.add(btnNext, 43, 25,16,3);
                 grid.add(btnHome, 2, 25,16,3);
                 grid.add(aide,5,10, 50,2);
@@ -97,17 +97,17 @@ public class PageCours extends Fenetre {
             case 2 :
                 clearAndSetBackground(imageViewR);
                 imageViewS.setOpacity(0);
-                imageViewV =mat.createImage("voiture.png", 200, 200, 0, 100, 380);
-                imageViewV1 =mat.createImage("scooter.png", 150, 150, 0, 400, 450);
-                imageViewV2 =mat.createImage("bike.png", 100, 100, 0, 700, 380);
-                imageViewS =mat.createImage("smoke.png", 45, 45, 65.0, 285, 480);
+                imageViewV =mat.createImage("./image/voiture.png", 200, 200, 0, 100, 380);
+                imageViewV1 =mat.createImage("./image/scooter.png", 150, 150, 0, 400, 450);
+                imageViewV2 =mat.createImage("./image/bike.png", 100, 100, 0, 700, 380);
+                imageViewS =mat.createImage("./image/smoke.png", 45, 45, 65.0, 285, 480);
                 aide = mat.createText("Voici plusieurs véhicules. Tu trouveras la voiture,\n"
                         + "le scooter et le vélo.",Color.GREEN);
                 Text voiture = mat.createText("Voiture",Color.WHITESMOKE);
                 Text scooter = mat.createText("Scooter",Color.WHITESMOKE);
                 Text velo = mat.createText("Vélo",Color.WHITESMOKE);
-                btnNext= createNextBtn("Prochaine page","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,this);
-                btnHome= createNextBtn("Accueil","home.png",IDLE_HOME_STYLE,HOVERED_HOME_STYLE,99,this);
+                btnNext= createNextBtn("Prochaine page","./image/next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,this);
+                btnHome= createNextBtn("Accueil","./image/home.png",IDLE_HOME_STYLE,HOVERED_HOME_STYLE,99,this);
                 grid.add(btnNext, 43, 22,16,3);
                 grid.add(btnHome, 2, 22,16,3);
                 grid.add(aide,5,10, 50,2);
@@ -135,18 +135,18 @@ public class PageCours extends Fenetre {
             case 3 :
                 clearAndSetBackground(imageViewR);
                 imageViewS.setOpacity(0);
-                imageViewV =mat.createImage("voiture.png", 200, 200, 0, 100, 380);
-                imageViewV3 =mat.createImage("voiture.png", 200, 200, 0, 500, 380);
-                imageViewV1 =mat.createImage("tree.png", 100, 100, 0, 500, 380);
-                imageViewV2 =mat.createImage("tree.png", 100, 100, 0, 800, 380);
-                imageViewS =mat.createImage("smokeco2.png", 45, 45, 0, 280, 465);
-                imageViewS2 =mat.createImage("smokeco2.png", 45, 45, 0, 680, 465);
-                imageViewS3 =mat.createImage("change.png", 70, 70, 0, 450, 380);
-                imageViewS4 =mat.createImage("change.png", 70, 70, 0, 750, 380);
-                aide = mat.createText("Dans la nature, les arbres absorbent le CO² qui est\n"
+                imageViewV =mat.createImage("./image/voiture.png", 200, 200, 0, 100, 380);
+                imageViewV3 =mat.createImage("./image/voiture.png", 200, 200, 0, 500, 380);
+                imageViewV1 =mat.createImage("./image/tree.png", 100, 100, 0, 500, 380);
+                imageViewV2 =mat.createImage("./image/tree.png", 100, 100, 0, 800, 380);
+                imageViewS =mat.createImage("./image/smokeco2.png", 45, 45, 0, 280, 465);
+                imageViewS2 =mat.createImage("./image/smokeco2.png", 45, 45, 0, 680, 465);
+                imageViewS3 =mat.createImage("./image/change.png", 70, 70, 0, 450, 380);
+                imageViewS4 =mat.createImage("./image/change.png", 70, 70, 0, 750, 380);
+                aide = mat.createText("Dans la nature, les arbres absorbent le CO2 qui est\n"
                         + "notamment produit par les voitures. Et en échange\n"
                         + "les arbres produisent de l'oxygène (écrit O²).",Color.GREEN);
-                btnHome= createNextBtn("Accueil","home.png",IDLE_HOME_STYLE,HOVERED_HOME_STYLE,99,this);
+                btnHome= createNextBtn("Accueil","./image/home.png",IDLE_HOME_STYLE,HOVERED_HOME_STYLE,99,this);
                 grid.add(btnHome, 2, 25,16,3);
                 grid.add(aide,5,10, 50,2);
                 timeline = new Timeline(new KeyFrame(

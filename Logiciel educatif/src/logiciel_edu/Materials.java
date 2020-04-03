@@ -122,31 +122,31 @@ public class Materials{
                     case 2:
                         reponse = mat.createText("C'est bien la fumée, bravo !\n"
                                 + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
-                        btnNext= createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,page1Jeu);
+                        btnNext= createNextBtn("Prochaine question","./image/next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,page1Jeu);
                         grid.add(btnNext, 25, 100);
                         break;
                     case 3:
                         reponse = mat.createText("La fumée est effectivement dangereuse pour nous !\n"
                                 + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
-                        btnNext = createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,page1Jeu);
+                        btnNext = createNextBtn("Prochaine question","./image/next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,page1Jeu);
                         grid.add(btnNext, 25, 100);
                         break;
                     case 4:
                         reponse = mat.createText("Le vélo est le plus écologique ! \nEffectivement il ne produit aucune fumée.\n"
                                 + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
-                        btnNext = createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,4,page1Jeu);
+                        btnNext = createNextBtn("Prochaine question","./image/next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,4,page1Jeu);
                         grid.add(btnNext, 25, 100);
                         break;
                     case 5:
                         reponse = mat.createText("Bien joué ! C'est bien ça le CO2 :-)\n"
                                 + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
-                        btnNext = createNextBtn("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,page1Jeu);
+                        btnNext = createNextBtn("Prochaine question","./image/next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,page1Jeu);
                         grid.add(btnNext, 25, 100);
                         break;
                     case 6:
                         reponse = mat.createText("Bien joué ! Le CO2 se compose bien d'oxygène et de carbone :-)\n"
                                 + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
-                        btnNext = createNextBtn("Bravo !","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,6,page1Jeu);
+                        btnNext = createNextBtn("Bravo !","./image/next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,6,page1Jeu);
                         grid.add(btnNext, 25, 100);
                         break;
                     case 51:
@@ -293,27 +293,27 @@ public class Materials{
                         break;
                     case 2:
                         reponse = mat.createText("Bravo !\n",Color.WHITESMOKE);
-                        btnNext= createNextBtnFacile("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,pageFacile);
+                        btnNext= createNextBtnFacile("Prochaine question","./image/next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,2,pageFacile);
                         grid.add(btnNext, 75, 130);
                         break;
                     case 3:
                         reponse = mat.createText("Bravo !\n",Color.WHITESMOKE);
-                        btnNext = createNextBtnFacile("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,pageFacile);
+                        btnNext = createNextBtnFacile("Prochaine question","./image/next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,pageFacile);
                         grid.add(btnNext, 75, 130);
                         break;
                     case 4:
                         reponse = mat.createText("Bravo !\n",Color.WHITESMOKE);
-                        btnNext = createNextBtnFacile("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,4,pageFacile);
+                        btnNext = createNextBtnFacile("Prochaine question","./image/next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,4,pageFacile);
                         grid.add(btnNext, 75, 130);
                         break;
                     case 5:
                         reponse = mat.createText("Bravo !\n",Color.WHITESMOKE);
-                        btnNext = createNextBtnFacile("Prochaine question","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,pageFacile);
+                        btnNext = createNextBtnFacile("Prochaine question","./image/next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,5,pageFacile);
                         grid.add(btnNext, 75, 130);
                         break;
                     case 6:
                         reponse = mat.createText("Bravo !\n",Color.WHITESMOKE);
-                        btnNext = createNextBtnFacile("Bravo !","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,6,pageFacile);
+                        btnNext = createNextBtnFacile("Bravo !","./image/next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,6,pageFacile);
                         grid.add(btnNext, 75, 130);
                         break;
                     case 51:
