@@ -169,7 +169,7 @@ public class JeuMoteur extends Fenetre {
     public void p1(){
         fleche.setLayoutY(400);
         exD.setText("Le piston est en bas\n"
-                + "ce qui laise entrer de l'essence\n"
+                + "ce qui laisse entrer de l'essence\n"
                 + "(ici en bleu).");
         exD.setLayoutY(400);
         demande.setLayoutX(450);
@@ -250,7 +250,7 @@ public class JeuMoteur extends Fenetre {
         exD.setText("Le piston remonte \n"
                 + "tout en poussant les gaz (ici en jaune)\n"
                 + "produits par la combustion de l'essence.\n"
-                + "C'est du CO2 en grande partie.");
+                + "C'est du CO² en grande partie.");
         exD.setLayoutY(360);
         exD.setLayoutX(750);
         demande.setLayoutX(450);
@@ -271,7 +271,7 @@ public class JeuMoteur extends Fenetre {
         root.getChildren().remove(exD);
         demande.setLayoutX(350);
         demande.setText("Et voilà! Maintenant mon moteur\n"
-                + "peut fonctionner grâce aux pièces que tu m'a données\n"
+                + "peut fonctionner grâce aux pièces que tu m'a donnés\n"
                 + "et à ces 4 temps.");
         String imageURI = new File("moteur.gif").toURI().toString(); 
         Image image = new Image(imageURI);

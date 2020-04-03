@@ -177,9 +177,9 @@ public class Page1Jeu extends Fenetre {
                 Button bo2carbone = mat.createBtn("Je pense que c'est ça","o2carbone.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,6,page1Jeu,grid);
                 Button bo2 = mat.createBtn("Je pense que c'est ça","o2.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,57,page1Jeu,grid);
                 Button bcarbone = mat.createBtn("Je pense que c'est ça","carbone.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,58,page1Jeu,grid);
-                aide = mat.createText("Le CO2 est constituée de carbone et d'oxygène.\n"
+                aide = mat.createText("Le CO² est constituée de carbone et d'oxygène.\n"
                         + "L'oxygène provient de la végétation et le carbone provient des rochers.\n"
-                        + "De quoi se compose le C02 ?",Color.GREEN);
+                        + "De quoi se compose le C0² ?",Color.GREEN);
                 imageViewV =mat.createImage("tree.png", 150, 150, 0, 500, 500);
                 grid.add(bo2carbone, 5, 60);
                 grid.add(bo2, 15, 60);
@@ -213,6 +213,10 @@ public class Page1Jeu extends Fenetre {
                 root.getChildren().add(imageViewV1);
                 root.getChildren().add(imageViewV2);
                 root.getChildren().add(imageViewS2);
+                break;
+            case 6:
+                page1Jeu.close();
+                PageBravo pageBravo = new PageBravo("moyen");
                 break;
             case 99:
                 page1Jeu.close();

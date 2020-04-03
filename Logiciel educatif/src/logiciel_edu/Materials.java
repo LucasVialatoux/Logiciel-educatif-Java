@@ -15,7 +15,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -27,7 +26,6 @@ import static logiciel_edu.Fenetre.page1Jeu;
 import static logiciel_edu.Fenetre.pageFacile;
 import static logiciel_edu.PageAccueil.HOVERED_BUTTON_STYLE;
 import static logiciel_edu.PageAccueil.IDLE_BUTTON_STYLE;
-import static logiciel_edu.PageAccueil.IMG_CLICK_STYLE;
 
 /**
  *
@@ -148,7 +146,7 @@ public class Materials{
                     case 6:
                         reponse = mat.createText("Bien joué ! Le CO2 se compose bien d'oxygène et de carbone :-)\n"
                                 + "Allez, passe vite à la question suivante !",Color.WHITESMOKE);
-                        btnNext = createNextBtn("Menu principal","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,99,page1Jeu);
+                        btnNext = createNextBtn("Bravo !","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,6,page1Jeu);
                         grid.add(btnNext, 25, 100);
                         break;
                     case 51:
@@ -315,7 +313,7 @@ public class Materials{
                         break;
                     case 6:
                         reponse = mat.createText("Bravo !\n",Color.WHITESMOKE);
-                        btnNext = createNextBtnFacile("Menu principal","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,99,pageFacile);
+                        btnNext = createNextBtnFacile("Bravo !","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,6,pageFacile);
                         grid.add(btnNext, 75, 130);
                         break;
                     case 51:

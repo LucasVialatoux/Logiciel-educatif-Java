@@ -23,8 +23,8 @@ import javafx.util.Duration;
 public class PageFacile extends Fenetre {
     
     private Text aide;
-    private final Materials mat= new Materials();;
-    private final GridPane grid = new GridPane();;
+    private final Materials mat= new Materials();
+    private final GridPane grid = new GridPane();
     private Timeline t, timeline, timeline2;
     private ImageView imageViewA;
     private StackPane imageViewV;
@@ -77,7 +77,7 @@ public class PageFacile extends Fenetre {
                 imageViewV =mat.createImageToClick("voiture.png", 200, 200, 0, 500, 380,2,pageFacile,grid);
                 imageViewS =mat.createImageToClick("smoke.png", 45, 45, 65.0, 685, 480,51,pageFacile,grid);
                 aide = mat.createText("Trouve la voiture, qui pollue l'environnement",Color.GREEN);
-                grid.add(aide, 7,50,50, 2);
+                grid.add(aide, 15,50,50, 2);
                 timeline = new Timeline(new KeyFrame(
                                 Duration.millis(500), 
                                 event-> {
@@ -98,7 +98,7 @@ public class PageFacile extends Fenetre {
                 aide = mat.createText("Trouve la fumée, qui est dangereuse pour la santé",Color.GREEN);
                 imageViewV =mat.createImageToClick("voiture.png", 200, 200, 0, 500, 380,52,pageFacile,grid);
                 imageViewS =mat.createImageToClick("smoke.png", 45, 45, 65.0, 685, 480,3,pageFacile,grid);
-                grid.add(aide, 7,50,50, 2);
+                grid.add(aide, 15,50,50, 2);
                 timeline = new Timeline(new KeyFrame(
                                 Duration.millis(500), 
                                 event-> {
@@ -171,7 +171,7 @@ public class PageFacile extends Fenetre {
                 imageViewS2 =mat.createImageToClick("carbone.png", 60, 60, 0, 700, 550,61,pageFacile,grid);
                 aide = mat.createText("Trouve l'oxygène",Color.GREEN);
                 imageViewV =mat.createImageToClick("tree.png", 150, 150, 0, 500, 500,62,pageFacile,grid);
-                grid.add(aide, 6,50,50, 2);
+                grid.add(aide, 15,50,50, 2);
                 timeline2 = new Timeline(new KeyFrame(
                                 Duration.millis(500), 
                                 event-> {
@@ -188,6 +188,10 @@ public class PageFacile extends Fenetre {
                 root.getChildren().add(imageViewV1);
                 root.getChildren().add(imageViewV2);
                 root.getChildren().add(imageViewS2);
+                break;
+            case 6:
+                pageFacile.close();
+                PageBravo pageBravo = new PageBravo("facile");
                 break;
             case 99:
                 pageFacile.close();

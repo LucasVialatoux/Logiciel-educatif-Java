@@ -30,8 +30,8 @@ import static logiciel_edu.PageAccueil.IDLE_HOME_STYLE;
 public class PageCours extends Fenetre {
     
     private Text aide;
-    private final Materials mat= new Materials();;
-    private final GridPane grid = new GridPane();;
+    private final Materials mat= new Materials();
+    private final GridPane grid = new GridPane();
     private Timeline t, timeline, timeline2;
     private ImageView imageViewA,imageViewV,imageViewV1,imageViewV2,imageViewV3
             ,imageViewS2,imageViewS3,imageViewS4;
@@ -146,9 +146,7 @@ public class PageCours extends Fenetre {
                 aide = mat.createText("Dans la nature, les arbres absorbent le CO² qui est\n"
                         + "notamment produit par les voitures. Et en échange\n"
                         + "les arbres produisent de l'oxygène (écrit O²).",Color.GREEN);
-                btnNext= createNextBtn("Prochaine page","next.png",IDLE_BUTTON_STYLE,HOVERED_BUTTON_STYLE,3,this);
                 btnHome= createNextBtn("Accueil","home.png",IDLE_HOME_STYLE,HOVERED_HOME_STYLE,99,this);
-                grid.add(btnNext, 43, 25,16,3);
                 grid.add(btnHome, 2, 25,16,3);
                 grid.add(aide,5,10, 50,2);
                 timeline = new Timeline(new KeyFrame(
